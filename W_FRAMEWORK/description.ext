@@ -1,0 +1,24 @@
+enableDebugConsole = 1;
+respawn = 3;
+
+#include "data\dialog.hpp"
+
+#ifdef RUNNINGMAN
+	#include "medical\runningMan.hpp"
+#endif
+
+#ifdef QUICKNDIRTY
+	#include "medical\quickAndDirty.hpp"
+#endif
+
+#ifdef BASEJUMPER
+	#include "medical\basejumper.hpp"
+#endif
+
+#ifdef MILSIM
+	#include "medical\milsim.hpp"
+#endif
+
+#ifdef CASUAL
+	#include "medical\casual.hpp"
+#endif

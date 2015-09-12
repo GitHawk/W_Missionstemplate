@@ -1,0 +1,64 @@
+
+/*
+ *		Die description.ext
+ *
+ * Diese Datei fungiert als Erweiterung zur ArmA III Engine. Hier könnt ihr Missionsrelevante Informationen,
+ * wie Ladebild, Missionstyp, Spielerzahl, etc. festlegen und Erweiterungen zu den configs schreiben,
+ * z.B. die CfgFunctions, CfgSounds, etc.
+ *
+ * Weitere Informationen findet ihr hier:
+ *		https://community.bistudio.com/wiki/description.ext
+ *		https://community.bistudio.com/wiki/Functions_Library_%28Arma_3%29
+ */
+
+// Medic-System Einstellungen:
+// Welches Medicsystem soll genutzt werden? Maximal eine Zeile auskommentieren!
+// !!!Sind mehrere Zeilen auskommentiert, wird das Spiel abstürzen!!!
+#define RUNNINGMAN
+// #define QUICKNDIRTY
+// #define BASEJUMPER
+// #define MILSIM
+// #define CASUAL
+
+/* LADEBILD */
+class Header
+{
+	gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 20;
+};
+
+// MISSIONSPARAMETER - Standard, nur für den HC. Muss unbedingt der erste Parameter bleiben!
+class Params {
+	class HeadlessClient {
+		title = "HeadlessClient";
+		values[] = {0,1};
+		texts[] =
+		{"OFF","ON"};
+		default = 0 ;
+	};
+};
+
+Author = "NAME DES MISSIONSBAUERS";
+OnLoadName = "MISSIONSNAME";
+OnLoadMission = "MISSIONSBESCHREIBUNG";
+//LoadScreen = "pics\loadingscreen.paa";
+
+/* OVERVIEW */
+
+overviewText = "MISSIONSBESCHREIBUNG";
+//overviewPicture = "pics\loadingscreen.paa";
+dev = "NAME DES MISSIONSBAUERS";
+
+/* RESPAWN */
+respawnDelay = 5;
+
+Saving = 0;
+disabledAI = 1;
+
+class CfgFunctions
+{
+	#include "W_FRAMEWORK\CfgFunctions.hpp"		//	W_FRAMEWORK
+};
+
+#include "W_FRAMEWORK\description.ext"			//	W_FRAMEWORK
