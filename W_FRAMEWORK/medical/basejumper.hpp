@@ -80,7 +80,7 @@ class ACE_Settings {
     };
     class ace_medical_enableAdvancedWounds {
         typeName = "BOOL";
-        value = true;
+        value = 1;
         force = 1;
     };
 

@@ -39,6 +39,15 @@ class Params {
 	};
 };
 
+// DEFINIERTES ENDE - Dieses Ende wird angezeigt, wenn dem Spieler ein DLC fehlt.
+class CfgDebriefing {
+	class dlcMissing {
+		title = "DLC fehlt";
+		description = "Dir fehlt mindestens ein DLC.";
+		picture = "";
+	};
+};
+
 Author = "NAME DES MISSIONSBAUERS";
 OnLoadName = "MISSIONSNAME";
 OnLoadMission = "MISSIONSBESCHREIBUNG";
@@ -56,8 +65,7 @@ respawnDelay = 5;
 Saving = 0;
 disabledAI = 1;
 
-class CfgFunctions
-{
+class CfgFunctions {
 	#include "W_FRAMEWORK\CfgFunctions.hpp"		//	W_FRAMEWORK
 };
 

@@ -31,4 +31,4 @@ FETT_VD_MAX_OBJ = 3500;
 // Diese Variable deaktiviert, ob Spieler das Gras austellen können
 // FETT_VD_DISABLE_NOGRASS = true;
 // Diese Variable aktiviert, dass alle Spieler die Terraineinstellungen auf der höchsten Stufe haben
-FETT_VD_FORCE_HIGHTERRAIN = true;
+// FETT_VD_FORCE_HIGHTERRAIN = true;

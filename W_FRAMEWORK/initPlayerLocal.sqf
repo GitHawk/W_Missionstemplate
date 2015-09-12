@@ -1,10 +1,14 @@
-[(player getVariable ["loadout",""]),player,(_this select 1)] call (missionnamespace getVariable format ["FETT_fnc_%1_loadout",["b","i","c","o"] select ([west,independent,civilian,east] find (side player))]);
+#ifndef CFGLOADOUTS
+	[(player getVariable ["loadout",""]),player,(_this select 1)] call (missionnamespace getVariable format ["FETT_fnc_%1_loadout",["b","i","c","o"] select ([west,independent,civilian,east] find (side player))]);
+#else
+	[player getVariable ["loadotu",""]] call FETT_fnc_applyCfgLoadout;
+#endif
 
 _missingHeli = 304380 in getDLCs 2;
 _missingMarksmen = 332350 in getDLCs 2;
 if (_missingHeli || _missingMarksmen) then {
 	[name player] remoteExecCall ["FETT_fnc_w_dlcMissing",0];
-    [] call BIS_fnc_endMission;
+    ["dlcMissing"] call BIS_fnc_endMission;
 };
 
 #ifdef NO_MAP_CONDITION
