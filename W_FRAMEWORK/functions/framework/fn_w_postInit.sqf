@@ -17,7 +17,7 @@ if !(isMultiplayer) then {
 					{
 						_name = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
 						_string = _string + _name + " ";
-					} forEach _this select 0;
+					} forEach (_this select 0);
 					_string = _string + "platziert. Diese müssen gelöscht werden.";
 					_string call BIS_fnc_error;
 

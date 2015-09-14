@@ -22,7 +22,4 @@ player createDiaryRecord ["Diary",["Technisches","
 	<t/>W_Teleporter - Teleport-Menü<br/>
 	<t/>W_Loadouts - Loadoutskripte<br/>
 	<br/>
-	CMS - Einstellungen:<br/>
-	<t/>Lifetime: 600<br/>
-	<t/>Advanced Wounds: ja
 "]];
