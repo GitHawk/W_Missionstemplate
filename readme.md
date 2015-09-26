@@ -1,4 +1,4 @@
-﻿# W_Missionstemplate 3v03
+﻿# W_Missionstemplate 3v10
 
 Lieber Missionsbauer,
 in dieser kleinen Datei möchte ich euch ein paar Grundzüge des Missionsbau und dieses Templates näherbringen.
@@ -47,10 +47,9 @@ Kann ich dieses Template mit meinen eigenen Templates kombinieren?
 -----------------------------------------
 Ja, das kannst du! Um ehrlich zu sein, habe ich dieses Template sogar auf Vereinbarkeit mit anderen Templates ausgelegt, deswegen gibt es z.B. keine mission.sqm.
 Was du tun musst ist:
-1. Kopier' die Ordner "loadouts" und "W_FRAMEWORK" in deinen Missionsordner.
-2. Kopier' alle #include Befehle aus allen Missionsdateien in deine entsprechenden Missionsdateien.
+Kopier' die Ordner "loadouts" und "W_FRAMEWORK" und die Datei "settings.sqf" in deinen Missionsordner.
 Fertig!
-	
+
 Updates meines Templates kannst du ganz einfach übernehmen, indem du den W_FRAMEWORK Ordner ersetzt!
 
 Noch fragen? Dann wende dich doch an mich (Fett_Li) oder Exolas!

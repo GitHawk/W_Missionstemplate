@@ -3,9 +3,13 @@ class W_Framework {
 	tag = "FETT";
 	class functions {
 		file = "W_FRAMEWORK\functions\framework";
+		class w_checkForbiddenObjects {};
+		class w_clientInit {};
 		class w_dlcMissing {};
 		class w_postInit { postInit = 1; };
-		class w_preInit { preInit = 1; };
+		class w_serverInit {};
+		class w_setHC {};
+		class w_setVariables {};
 	};
 };
 

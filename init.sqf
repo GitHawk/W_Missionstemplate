@@ -17,12 +17,6 @@
 // Diese Variable deaktiviert das Verteilen der Microdagr durch TFAR
 TF_give_microdagr_to_soldier = false;
 
-// Der #include Befehl fügt Dateien ein, so als wäre deren Inhalt hier geschrieben.
-// Er wird nur einmal beim erstens Ausführen einer Datei aufgerufen.
-
-// Hier werden alle Standards eingefügt, das ist nicht weiter wichtig für dich.
-#include "W_FRAMEWORK\init.sqf"
-
 // Viewdistance Einstellungen - vor gewünschten Variablen einfach das Kommentarzeichen entfernen.
 // Diese Variable legt die einstellbare Maximalsichtweite für Terrain fest.
 FETT_VD_MAX = 12000;

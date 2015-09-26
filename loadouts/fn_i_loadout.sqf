@@ -1,6 +1,4 @@
-_class = [_this,0,"",[""]] call BIS_fnc_param;
-_obj = [_this,1,player,[objNull]] call BIS_fnc_param;
-_isJIP = [_this,2,false,[true]] call BIS_fnc_param;
+params ["_class","_obj"];
 
 if (_class == "") exitWith {};
 _class = toUpper _class;

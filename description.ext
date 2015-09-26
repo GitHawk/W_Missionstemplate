@@ -30,22 +30,12 @@ class Header
 
 // MISSIONSPARAMETER - Standard, nur für den HC. Muss unbedingt der erste Parameter bleiben!
 class Params {
-	class HeadlessClient {
-		title = "HeadlessClient";
-		values[] = {0,1};
-		texts[] =
-		{"OFF","ON"};
-		default = 0 ;
-	};
+	#include "W_FRAMEWORK\paramHC.hpp"			//	W_FRAMEWORK
 };
 
 // DEFINIERTES ENDE - Dieses Ende wird angezeigt, wenn dem Spieler ein DLC fehlt.
 class CfgDebriefing {
-	class dlcMissing {
-		title = "DLC fehlt";
-		description = "Dir fehlt mindestens ein DLC.";
-		picture = "";
-	};
+	#include "W_FRAMEWORK\endingDLC.hpp"		//	W_FRAMEWORK
 };
 
 Author = "NAME DES MISSIONSBAUERS";
