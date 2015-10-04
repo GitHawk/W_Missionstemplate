@@ -1,4 +1,4 @@
-﻿# W_Missionstemplate 3v11
+﻿# W_Missionstemplate 3v12
 
 Lieber Missionsbauer,
 in dieser kleinen Datei möchte ich euch ein paar Grundzüge des Missionsbau und dieses Templates näherbringen.

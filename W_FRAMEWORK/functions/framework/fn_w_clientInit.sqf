@@ -24,7 +24,7 @@ switch _mode do {
 		// Get all settings
 		private "_settings";
 		_settings = call compile preprocessFileLineNumbers "settings.sqf";
-		_settings params ["_cfgLoadouts","_noMapCondition"];
+		_settings params ["_cfgLoadouts","_noMapCondition","_logFF"];
 
 		// Apply loadout
 		if (_cfgLoadouts) then {
@@ -44,6 +44,16 @@ switch _mode do {
 					[_this select 1] call CBA_fnc_removePerFramerHandler;
 				};
 			},0,[]] call CBA_fnc_addPerFrameHandler;
+		};
+
+		// Log friendly fire
+		if (_logFF) then {
+			player addEventHandler ["Hit",{
+				params ["_target","_shooter","_damage"];
+				if (isPlayer _shooter && side _shooter == side _target) then {
+					(format ["W_LOG_FRIENLDYFIRE: %1",name _shooter]) remoteExecCall ["diag_log",0];
+				};
+			}];
 		};
 	};
 };

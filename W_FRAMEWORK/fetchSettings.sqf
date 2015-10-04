@@ -7,7 +7,13 @@ _cfgLoadouts = false;
 private "_noMapCondition";
 _noMapCondition = {false};
 #ifdef NOMAPCONDITION
-	_noMapCondition {NOMAPCONDITION}
+	_noMapCondition = {NOMAPCONDITION};
 #endif
 
-[_cfgLoadouts,_noMapCondition]
+private "_logFF";
+_logFF = false;
+#ifdef LOGFF
+	_logFF = true;
+#endif
+
+[_cfgLoadouts,_noMapCondition,_logFF]
