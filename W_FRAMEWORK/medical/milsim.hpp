@@ -136,7 +136,7 @@ class ACE_Settings {
 
     class ace_medical_healHitPointAfterAdvBandage {
         typeName = "BOOL";
-        value = 1;
+        value = 0;
         force = 1;
     };
     class ace_medical_painIsOnlySuppressed {
