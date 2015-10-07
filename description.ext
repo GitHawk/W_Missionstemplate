@@ -20,7 +20,7 @@
 // #define MILSIM
 // #define CASUAL
 
-/* LADEBILD */
+/* MISSIONSINFORMATIONEN */
 class Header
 {
 	gameType = COOP;
