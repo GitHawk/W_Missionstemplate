@@ -148,7 +148,7 @@ class ACE_Settings {
     // Revive settings
     class ace_medical_enableRevive {
         typeName = "SCALAR";
-        value = 1;
+        value = 0;
         values[] = {"Disabled", "Players only", "Players and AI"};
         force = 1;
     };

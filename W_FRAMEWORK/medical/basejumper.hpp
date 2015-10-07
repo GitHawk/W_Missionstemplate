@@ -57,7 +57,7 @@ class ACE_Settings {
 
     class ace_medical_bleedingCoefficient {
         typeName = "SCALAR";
-        value = 1;
+        value = 0.7;
         force = 1;
     };
     class ace_medical_painCoefficient {
@@ -148,13 +148,13 @@ class ACE_Settings {
     // Revive settings
     class ace_medical_enableRevive {
         typeName = "SCALAR";
-        value = 1;
+        value = 0;
         values[] = {"Disabled", "Players only", "Players and AI"};
         force = 1;
     };
     class ace_medical_maxReviveTime {
         typeName = "SCALAR";
-        value = 480;
+        value = 600;
         force = 1;
     };
     class ace_medical_amountOfReviveLives {
