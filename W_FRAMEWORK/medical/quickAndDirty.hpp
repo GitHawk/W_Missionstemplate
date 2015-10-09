@@ -148,13 +148,13 @@ class ACE_Settings {
     // Revive settings
     class ace_medical_enableRevive {
         typeName = "SCALAR";
-        value = 0;
+        value = 1;
         values[] = {"Disabled", "Players only", "Players and AI"};
         force = 1;
     };
     class ace_medical_maxReviveTime {
         typeName = "SCALAR";
-        value = 600;
+        value = 300;
         force = 1;
     };
     class ace_medical_amountOfReviveLives {

@@ -5,20 +5,25 @@ respawn = 3;
 
 #ifdef RUNNINGMAN
 	#include "medical\runningMan.hpp"
+	medicSystem = "RUNNINGMAN";
 #endif
 
 #ifdef QUICKNDIRTY
 	#include "medical\quickAndDirty.hpp"
+	medicSystem = "QUICKNDIRTY";
 #endif
 
 #ifdef BASEJUMPER
 	#include "medical\basejumper.hpp"
+	medicSystem = "BASEJUMPER";
 #endif
 
 #ifdef MILSIM
 	#include "medical\milsim.hpp"
+	medicSystem = "MILSIM";
 #endif
 
 #ifdef CASUAL
 	#include "medical\casual.hpp"
+	medicSystem = "CASUAL";
 #endif
