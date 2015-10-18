@@ -17,8 +17,13 @@ switch (_this select 0) do {
     case ("init"): {
         if (isNil "FETT_VD_INIT") then {
             FETT_VD_INIT = true;
-            FETT_VD_STD = viewDistance;
-            FETT_VD_OBJ = viewDistance;
+
+            FETT_VD_STD = viewDistance min FETT_VD_MAX;
+            player setViewDistance FETT_VD_STD;
+
+            FETT_VD_OBJ = viewDistance min FETT_VD_MAX_OBJ;
+            player setObjectViewDistance FETT_VD_OBJ;
+
             FETT_VD_GRID = 25;
             if (isNil "FETT_VD_MAX") then {FETT_VD_MAX = MAX_VD};
             if (isNil "FETT_VD_MAX_OBJ") then {FETT_VD_MAX_OBJ = MAX_OBJ_VD};
