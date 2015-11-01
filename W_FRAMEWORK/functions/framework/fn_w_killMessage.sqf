@@ -5,7 +5,7 @@ private "_shooterCrewMessage";
 _shooterCrewMessage = "SHOOTER VEHICLE CREW: ";
 {
 	private ["_thisMessage","_role"];
-	_thisMessage = str _x;
+	_thisMessage = name _x;
 	_role = (assignedVehicleRole _x) param [0,""];
 	if (_role != "") then {
 		_thisMessage = _thisMessage + " (" + _role + ")"
