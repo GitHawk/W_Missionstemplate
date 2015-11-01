@@ -20,6 +20,9 @@
 // #define MILSIM
 // #define CASUAL
 
+// Hier können die Channels angeschaltet werden.
+// #define ALLCHANNELS
+
 /* MISSIONSINFORMATIONEN */
 class Header
 {
