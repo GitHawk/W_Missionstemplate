@@ -49,9 +49,9 @@ switch _mode do {
 		// Log friendly fire
 		if (_logFF) then {
 			player addEventHandler ["Hit",{
-				params ["_target","_shooter","_damage"];
-				if (isPlayer _shooter && side _shooter == side _target) then {
-					(format ["W_LOG_FRIENLDYFIRE: %1",name _shooter]) remoteExecCall ["diag_log",0];
+				params ["_target","_shooter"];
+				if (isPlayer _shooter && {side _shooter == side _target && _shooter != _target}) then {
+					[_target,_shooter] remoteExecCall ["FETT_fnc_w_killMessage"];
 				};
 			}];
 		};
