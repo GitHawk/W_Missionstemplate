@@ -3,7 +3,6 @@ class W_Framework {
 	tag = "FETT";
 	class functions {
 		file = "W_FRAMEWORK\functions\framework";
-		class w_checkForbiddenObjects {};
 		class w_clientInit {};
 		class w_dlcMissing {};
 		class w_killMessage {};

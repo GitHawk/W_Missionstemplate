@@ -6,8 +6,6 @@ switch _mode do {
 		if (isHC) then { call compile preprocessFileLineNumbers "initHC.sqf" };
 		0 call FETT_fnc_w_setVariables;
 
-		["ACE_moduleMedicalSettings","ACE_moduleAdvancedMedicalSettings","ACE_moduleReviveSettings"] call FETT_fnc_w_checkForbiddenObjects;
-
 		// HC can exit now
 		if (!hasInterface) exitWith {};
 

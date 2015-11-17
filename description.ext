@@ -15,10 +15,9 @@
 // Welches Medicsystem soll genutzt werden? Maximal eine Zeile auskommentieren!
 // !!!Sind mehrere Zeilen auskommentiert, wird das Spiel abstürzen!!!
 #define RUNNINGMAN
-// #define QUICKNDIRTY
 // #define BASEJUMPER
+// #define BASEJUMPER_LAND
 // #define MILSIM
-// #define CASUAL
 
 // Hier können die Channels angeschaltet werden.
 // #define ALLCHANNELS
