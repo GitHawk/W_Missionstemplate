@@ -27,6 +27,7 @@ class ACE_settings {
 	#include "mod_settings\ace_explosives.hpp"
 	#include "mod_settings\ace_hearing.hpp"
 	#include "mod_settings\ace_logistics.hpp"
+	#include "mod_settings\ace_map.hpp"
 	#include "mod_settings\ace_nametags.hpp"
 	#include "mod_settings\ace_pointing.hpp"
 	#include "mod_settings\ace_weather.hpp"

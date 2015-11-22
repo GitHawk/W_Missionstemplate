@@ -108,7 +108,7 @@ class ace_medical_useCondition_PAK {
 };
 class ace_medical_useLocation_PAK {
 	typeName = "SCALAR";
-	value = 1;
+	value = 3;
 	values[] = {"Anywhere", "Medical vehicles", "Medical facility", "vehicle & facility", "Disabled"};
 	force = 1;
 };
