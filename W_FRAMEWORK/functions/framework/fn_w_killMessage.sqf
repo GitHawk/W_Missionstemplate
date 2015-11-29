@@ -18,7 +18,7 @@ _shooterCrewMessage = "SHOOTER VEHICLE CREW: ";
 private "_message";
 _message = "
 
-" + format ["W_LOG_FRIENLDYFIRE: %1 FROM %2 IN %3",name _gotKilled,name _didKill,typeOf vehicle _didKill] + "
+" + format ["W_LOG_FRIENDLYFIRE: %1 FROM %2 IN %3",name _gotKilled,name _didKill,typeOf vehicle _didKill] + "
 " + _shooterCrewMessage + "
 " + format ["SHOT AT %1 FROM %2",getPosATL _gotKilled,getPosATL _didKill] + "
 " + format ["SHOT WITH %1",currentWeapon vehicle _didKill] + "
