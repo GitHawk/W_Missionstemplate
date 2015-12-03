@@ -4,6 +4,8 @@
 #define NOMAPCONDITION true
 // Hier wird eingeschaltet, dass Friendly fire in die .rpt geschrieben wird
 #define LOGFF
+// Hier kann ausgeschaltet werden, dass Spieler ohne DLCs gekickt werden
+// #define NOKICK
 
 // Diese Zeile darf nicht gelöscht werden!
 #include "W_FRAMEWORK\fetchSettings.sqf"

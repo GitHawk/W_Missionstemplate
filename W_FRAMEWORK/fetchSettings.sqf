@@ -1,19 +1,21 @@
-private "_cfgLoadouts";
-_cfgLoadouts = false;
+private _cfgLoadouts = false;
 #ifdef CFGLOADOUTS
 	_cfgLoadouts = true;
 #endif
 
-private "_noMapCondition";
-_noMapCondition = {false};
+private _noMapCondition = {false};
 #ifdef NOMAPCONDITION
 	_noMapCondition = {NOMAPCONDITION};
 #endif
 
-private "_logFF";
-_logFF = false;
+private _logFF = false;
 #ifdef LOGFF
 	_logFF = true;
 #endif
 
-[_cfgLoadouts,_noMapCondition,_logFF]
+private _allowKick = true;
+#ifdef NOKICK
+	_allowKick = false;
+#endif
+
+[_cfgLoadouts,_noMapCondition,_logFF,_allowKick]

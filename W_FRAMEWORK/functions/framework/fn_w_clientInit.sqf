@@ -9,27 +9,26 @@ switch _mode do {
 		// HC can exit now
 		if (!hasInterface) exitWith {};
 
-		private "_missingDLCs";
-		_missingDLCs = getDLCs 2;
+		// Get all settings
+		private _settings = call compile preprocessFileLineNumbers "settings.sqf";
+		_settings params ["_cfgLoadouts","_noMapCondition","_logFF","_allowKick"];
+
+		private _missingDLCs = getDLCs 2;
 		// noHeli || noMarksman
 		if (304380 in _missingDLCs || 332350 in _missingDLCs) then {
 			[name player] remoteExecCall ["FETT_fnc_w_dlcMissing",0];
-			["dlcMissing"] call BIS_fnc_endMission;
+			if (_allowKick) then {
+				["dlcMissing"] call BIS_fnc_endMission;
+			};
 		};
 
 		player addAction ["Viewdistance",{createDialog "W_RscVDDialog";}];
-
-		// Get all settings
-		private "_settings";
-		_settings = call compile preprocessFileLineNumbers "settings.sqf";
-		_settings params ["_cfgLoadouts","_noMapCondition","_logFF"];
 
 		// Apply loadout
 		if (_cfgLoadouts) then {
 			[player getVariable ["loadout",""],"",player] call FETT_fnc_applyCfgLoadout;
 		} else {
-			private "_fnc";
-			_fnc = format ["FETT_fnc_%1_loadout",["b","i","c","o"] select ([west,independent,civilian,east] find side player)];
+			private _fnc = format ["FETT_fnc_%1_loadout",["b","i","c","o"] select ([west,independent,civilian,east] find side player)];
 			_fnc = missionNamespace getVariable _fnc;
 			[(player getVariable ["loadout",""]),player] call _fnc;
 		};
