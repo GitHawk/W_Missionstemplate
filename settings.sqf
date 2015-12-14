@@ -4,6 +4,8 @@
 #define NOMAPCONDITION true
 // Hier wird eingeschaltet, dass Friendly fire in die .rpt geschrieben wird
 #define LOGFF
+// Hier kann der HC ausgeschaltet werden, das bedeutet, dass isHC = isServer
+// #define NOHC
 
 // Diese Zeile darf nicht gelöscht werden!
 #include "W_FRAMEWORK\fetchSettings.sqf"

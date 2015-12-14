@@ -2,13 +2,6 @@ params ["_mode"];
 _mode = toLower _mode;
 switch _mode do {
 	case "postinit": {
-		isHC = !isNil "paramsArray" && {paramsArray select 0 == 1 && !hasInterface};
-		if (isHC) then { call compile preprocessFileLineNumbers "initHC.sqf" };
-		0 call FETT_fnc_w_setVariables;
-
-		// HC can exit now
-		if (!hasInterface) exitWith {};
-
 		// Get all settings
 		private _settings = call compile preprocessFileLineNumbers "settings.sqf";
 		_settings params ["_cfgLoadouts","_noMapCondition","_logFF","_allowKick"];

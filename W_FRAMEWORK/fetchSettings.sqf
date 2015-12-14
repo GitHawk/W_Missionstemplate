@@ -18,4 +18,9 @@ private _allowKick = true;
 	_allowKick = false;
 #endif
 
-[_cfgLoadouts,_noMapCondition,_logFF,_allowKick]
+private _noHC = false;
+#ifdef NOHC
+	_noHC = true;
+#endif
+
+[_cfgLoadouts,_noMapCondition,_logFF,_allowKick,_noHC]
