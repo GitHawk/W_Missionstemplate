@@ -8,5 +8,3 @@ if (hasInterface) then {
 if (isServer) then {
 	["postinit"] call FETT_fnc_w_serverInit;
 };
-
-if (isHC) then { call compile preprocessFileLineNumbers "initHC.sqf" };
