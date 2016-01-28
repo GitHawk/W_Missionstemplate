@@ -19,7 +19,7 @@ switch _mode do {
 
 		// Apply loadout
 		if (_cfgLoadouts) then {
-			[player getVariable ["loadout",""],"",player] call FETT_fnc_applyCfgLoadout;
+			[player getVariable ["loadout",""], player getVariable ["faction",""], player] call FETT_fnc_applyCfgLoadout;
 		} else {
 			private _fnc = format ["FETT_fnc_%1_loadout",["b","i","c","o"] select ([west,independent,civilian,east] find side player)];
 			_fnc = missionNamespace getVariable _fnc;

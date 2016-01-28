@@ -13,18 +13,6 @@ class W_Framework {
 	};
 };
 
-// loadouts
-class W_Loadouts {
-	tag = "FETT";
-	class loadouts {
-		file = "loadouts";
-		class b_loadout {};
-		class o_loadout {};
-		class i_loadout {};
-		class c_loadout {};
-	};
-};
-
 //	W_Teleporter v1.1.0 by [W] Fett_Li
 class W_Teleporter {
 	tag = "FETT";
