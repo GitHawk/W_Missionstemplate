@@ -20,8 +20,11 @@
 // #define MILSIM
 
 class CfgFrameworkSettings {
+	// Bedingung, unter der den Spielern die Karte _nach_ Missionstart weggenommen werden soll. Formuliert als Code.
 	nomap = "true";
+	// 1 für Friendly Fire Logging, 0 sonst
 	logff = 1;
+	// 1, wenn Spieler bei fehlenden DLCs gekickt werden sollen, 0 sonst
 	allowkick = 1;
 };
 
