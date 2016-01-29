@@ -3,5 +3,6 @@ class framework_misc {
 	class main {
 		file = "W_FRAMEWORK\pacakges\misc\functions";
 		class checkRespawnMarker {};
+		class techSupport {};
 	};
 };
