@@ -12,4 +12,10 @@ class CfgFramework {
 		server = 1;
 		preinit = 1;
 	};
+
+	class initHC {
+		file = "initHC.sqf";
+		hc = 1;
+		postinit = 1;
+	};
 };

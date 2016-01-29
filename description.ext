@@ -19,6 +19,7 @@
 // #define BASEJUMPER_LAND
 // #define MILSIM
 
+// Einstellungen für das Framework
 class CfgFrameworkSettings {
 	// Bedingung, unter der den Spielern die Karte _nach_ Missionstart weggenommen werden soll. Formuliert als Code.
 	nomap = "true";
