@@ -1,4 +1,4 @@
-params ["_class","_obj"];
+params [["_class","",[""]],["_obj",player,[objNull]]];
 
 if (_class == "") exitWith {};
 _class = toUpper _class;
