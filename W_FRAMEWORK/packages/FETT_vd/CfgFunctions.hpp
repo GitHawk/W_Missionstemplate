@@ -1,6 +1,6 @@
 class FETT_vd {
 	class main {
-		file = "W_FRAMEWORK\FETT_vd\functions";
+		file = "W_FRAMEWORK\packages\FETT_vd\functions";
 		class add {};
 		class dialog {};
 	};
