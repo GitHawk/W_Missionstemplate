@@ -10,7 +10,7 @@ if (!isClass _setting) exitWith { _default };
 private _val = 0;
 switch (_type) do {
 	case "SCALAR": { _val = getNumber _setting; };
-	case "BOOL": { _val = getNumber _setting == 1; };
+	case "BOOL": { _val = getNumber _setting != 0; };
 	case "STRING": { _val = getText _setting; };
 	case "ARRAY": { _val = getArray _setting; };
 	case "CODE": { _val = compile getText _setting; };
