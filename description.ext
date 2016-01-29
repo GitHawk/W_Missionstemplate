@@ -11,7 +11,33 @@
  *		https://community.bistudio.com/wiki/Functions_Library_%28Arma_3%29
  */
 
-// Medic-System Einstellungen:
+/* MISSIONSINFORMATIONEN */
+class Header
+{
+	gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 20;
+};
+
+Author = "NAME DES MISSIONSBAUERS";
+OnLoadName = "MISSIONSNAME";
+OnLoadMission = "MISSIONSBESCHREIBUNG";
+//LoadScreen = "pics\loadingscreen.paa";
+
+/* OVERVIEW */
+overviewText = "MISSIONSBESCHREIBUNG";
+//overviewPicture = "pics\loadingscreen.paa";
+dev = "NAME DES MISSIONSBAUERS";
+
+/* RESPAWN */
+respawnDelay = 5;
+
+/* GENERELLES */
+Saving = 0;
+disabledAI = 1;
+
+/* EINSTELLUNGEN FÜR DAS FRAMEWORK */
+
 // Welches Medicsystem soll genutzt werden? Maximal eine Zeile auskommentieren!
 // !!!Sind mehrere Zeilen auskommentiert, wird das Spiel abstürzen!!!
 #define RUNNINGMAN
@@ -34,38 +60,23 @@ class CfgFrameworkSettings {
 // Hier können die Channels angeschaltet werden.
 // #define ALLCHANNELS
 
-/* MISSIONSINFORMATIONEN */
-class Header
-{
-	gameType = COOP;
-	minPlayers = 1;
-	maxPlayers = 20;
-};
+/* ERWEITERTE EINSTELLUNGEN */
 
 // MISSIONSPARAMETER - Standard, nur für den HC. Muss unbedingt der erste Parameter bleiben!
-class Params {
-	#include "W_FRAMEWORK\paramHC.hpp"			//	W_FRAMEWORK
-};
-
-Author = "NAME DES MISSIONSBAUERS";
-OnLoadName = "MISSIONSNAME";
-OnLoadMission = "MISSIONSBESCHREIBUNG";
-//LoadScreen = "pics\loadingscreen.paa";
-
-/* OVERVIEW */
-
-overviewText = "MISSIONSBESCHREIBUNG";
-//overviewPicture = "pics\loadingscreen.paa";
-dev = "NAME DES MISSIONSBAUERS";
-
-/* RESPAWN */
-respawnDelay = 5;
-
-Saving = 0;
-disabledAI = 1;
-
 class CfgFunctions {
 	#include "W_FRAMEWORK\CfgFunctions.hpp"		//	W_FRAMEWORK
 };
 
+class Params {
+	#include "W_FRAMEWORK\paramHC.hpp"			//	W_FRAMEWORK
+};
+
 #include "W_FRAMEWORK\description.ext"			//	W_FRAMEWORK
+
+class ACE_Settings {
+	#include "W_FRAMEWORK\ACE_Settings"			// W_FRAMEWORK
+};
+
+class CfgFramework {
+	#include "W_FRAMEWORK\CfgFramework.hpp"		// W_FRAMEWORK
+};
