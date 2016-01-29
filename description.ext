@@ -19,6 +19,12 @@
 // #define BASEJUMPER_LAND
 // #define MILSIM
 
+class CfgFrameworkSettings {
+	nomap = "true";
+	logff = 1;
+	allowkick = 1;
+};
+
 // Hier können die Channels angeschaltet werden.
 // #define ALLCHANNELS
 
