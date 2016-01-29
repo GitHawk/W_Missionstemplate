@@ -1,5 +1,14 @@
 class CfgFramework {
-	#include "FETT_vd\CfgFramework.hpp"
-	#include "loadouts\CfgFramework.hpp"
-	#include "dlcCheck\CfgFramework.hpp"
+	#include "packages\FETT_vd\CfgFramework.hpp"
+	#include "packages\loadouts\CfgFramework.hpp"
+	#include "packages\dlcCheck\CfgFramework.hpp"
+	#include "packages\nomap\CfgFramework.hpp"
+	#include "packages\friendlyfire\CfgFramework.hpp"
+
+	class noFFPunishment {
+		code = "W_no_ff_punishment = true;";
+		client = 1;
+		server = 1;
+		preinit = 1;
+	};
 };

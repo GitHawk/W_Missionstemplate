@@ -35,11 +35,6 @@ class Params {
 	#include "W_FRAMEWORK\paramHC.hpp"			//	W_FRAMEWORK
 };
 
-// DEFINIERTES ENDE - Dieses Ende wird angezeigt, wenn dem Spieler ein DLC fehlt.
-class CfgDebriefing {
-	#include "W_FRAMEWORK\endingDLC.hpp"		//	W_FRAMEWORK
-};
-
 Author = "NAME DES MISSIONSBAUERS";
 OnLoadName = "MISSIONSNAME";
 OnLoadMission = "MISSIONSBESCHREIBUNG";

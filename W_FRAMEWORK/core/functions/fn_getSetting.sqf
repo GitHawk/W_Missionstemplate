@@ -13,6 +13,7 @@ switch (_type) do {
 	case "BOOL": { _val = getNumber _setting == 1; };
 	case "STRING": { _val = getText _setting; };
 	case "ARRAY": { _val = getArray _setting; };
+	case "CODE": { _val = compile getText _setting; };
 };
 
 _val
