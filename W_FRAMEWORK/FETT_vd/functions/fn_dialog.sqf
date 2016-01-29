@@ -1,17 +1,7 @@
-#define CONTROL (_display displayCtrl _idc)
-
-#define IDC_TITLE       100
-#define IDC_SLIDER      101
-#define IDC_TITLE_1     102
-#define IDC_SLIDER_1    103
-#define IDC_XLISTBOX    104
-
-#define MAX_VD      12000
-#define MAX_OBJ_VD  5000
+#include "..\script_component.hpp"
 
 disableSerialization;
-private "_params";
-_params = _this select 1;
+params ["_mode","_params"];
 
 switch (_this select 0) do {
 	case ("init"): {
@@ -41,12 +31,10 @@ switch (_this select 0) do {
 			player setVariable ["FETT_maxVD_obj",FETT_VD_MAX_OBJ,true];
 		};
 
-		private "_display";
-		_display = _params select 0;
+		private _display = _params select 0;
 
 		// Set viewdistance options
-		private "_idc";
-		_idc = IDC_TITLE;
+		private _idc = IDC_TITLE;
 		CONTROL ctrlSetText (format ["Sichtweite: %1",FETT_VD_STD]);
 		CONTROL ctrlCommit 0;
 		_idc = IDC_SLIDER;
@@ -65,11 +53,9 @@ switch (_this select 0) do {
 
 		// Set terrain options
 		_idc = IDC_XLISTBOX;
-		private "_curGrid";
-		_curGrid = -1;
+		private _curGrid = -1;
 		{
-			private "_index";
-			_index = CONTROL lbAdd (_x select 0);
+			private _index = CONTROL lbAdd (_x select 0);
 			CONTROL lbSetValue [_index,(_x select 1)];
 			if (_x select 1 == FETT_VD_GRID) then {_curGrid = _index};
 		} forEach FETT_VD_TERRAIN_SETTINGS;
@@ -78,12 +64,11 @@ switch (_this select 0) do {
 		};
 	};
 	case ("vd"): {
-		private ["_ctrl","_display","_idc","_range"];
-		_ctrl = _params select 0;
-		_display = ctrlParent _ctrl;
-		_idc = IDC_TITLE;
+		private _ctrl = _params select 0;
+		private _display = ctrlParent _ctrl;
+		private _idc = IDC_TITLE;
 
-		_range = sliderPosition _ctrl;
+		private _range = sliderPosition _ctrl;
 		FETT_VD_STD = _range;
 		CONTROL ctrlSetText format ["Sichtweite: %1",_range];
 		CONTROL ctrlCommit 0;
@@ -100,12 +85,11 @@ switch (_this select 0) do {
 		setViewDistance _range;
 	};
 	case ("ovd"): {
-		private ["_ctrl","_display","_idc","_range"];
-		_ctrl = _params select 0;
-		_display = ctrlParent _ctrl;
-		_idc = IDC_TITLE_1;
+		private _ctrl = _params select 0;
+		private _display = ctrlParent _ctrl;
+		private _idc = IDC_TITLE_1;
 
-		_range = sliderPosition _ctrl;
+		private _range = sliderPosition _ctrl;
 		FETT_VD_OBJ = _range;
 		CONTROL ctrlSetText format ["Objektsichtweite: %1",_range];
 		CONTROL ctrlCommit 0;
@@ -113,12 +97,11 @@ switch (_this select 0) do {
 		setObjectViewDistance _range;
 	};
 	case ("terrain"): {
-		private ["_ctrl","_display","_index"];
-		_ctrl = _params select 0;
-		_display = ctrlparent _ctrl;
-		_index = _params select 1;
+		private _ctrl = _params select 0;
+		private _display = ctrlparent _ctrl;
+		private _index = _params select 1;
 
-		_grid = _ctrl lbValue _index;
+		private _grid = _ctrl lbValue _index;
 		setTerrainGrid _grid;
 		FETT_VD_GRID = _grid;
 	};

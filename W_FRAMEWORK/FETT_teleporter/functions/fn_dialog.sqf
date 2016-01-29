@@ -1,8 +1,8 @@
 ﻿#define CONTROL					(_display displayCtrl _idc)
 
-#define LEADER_PIC				"W_FRAMEWORK\data\isLeader.paa"
-#define VEHICLE_PIC 			"W_FRAMEWORK\data\isInVehicle.paa"
-#define COMBINED_PIC 			"W_FRAMEWORK\data\isCombined.paa"
+#define LEADER_PIC				"W_FRAMEWORK\FETT_teleporter\ui\isLeader.paa"
+#define VEHICLE_PIC 			"W_FRAMEWORK\FETT_teleporter\ui\isInVehicle.paa"
+#define COMBINED_PIC 			"W_FRAMEWORK\FETT_teleporter\ui\isCombined.paa"
 
 #define IDC_CB		2500
 #define IDC_CB_1	2501
@@ -13,40 +13,34 @@
 #define IDC_LB_1	1501
 
 disableSerialization;
-private "_params";
-_params = _this select 1;
+params ["_mode","_params"];
 
 // set the ui event handlers
-switch (_this select 0) do {
+switch (_mode) do {
 	case ("init"): {
 		FETT_TELEPORT_TARGET = objNull;
 		FETT_TELEPORT_TURRETS = [];
 	};
 	case ("cb"): {
-		private ["_ctrl","_display"];
-		_ctrl = _params select 0;
-		_display = ctrlParent _ctrl;
+		private _ctrl = _params select 0;
+		private _display = ctrlParent _ctrl;
 
 		if (ctrlChecked _ctrl) then {
-			private ["_cbs","_index"];
-			_cbs = [IDC_CB,IDC_CB_1,IDC_CB_2,IDC_CB_3];
-			_index = ctrlIDC _ctrl - IDC_CB;
+			private _cbs = [IDC_CB,IDC_CB_1,IDC_CB_2,IDC_CB_3];
+			private _index = ctrlIDC _ctrl - IDC_CB;
 			_cbs deleteAt _index;
 			{
-				private "_idc";
-				_idc = _x;
+				private _idc = _x;
 				CONTROL ctrlSetChecked false;
 			} forEach _cbs;
 			_side = [west,independent,east,civilian] select _index;
 
 			{
-				private "_idc";
-				_idc = _x;
+				private _idc = _x;
 				lbClear CONTROL;
 			} forEach [IDC_LB,IDC_LB_1];
 
-			private "_idc";
-			_idc = IDC_LB;
+			private _idc = IDC_LB;
 			{
 				if (side _x == _side) then {
 					_index = CONTROL lbAdd (name _x);
@@ -64,30 +58,25 @@ switch (_this select 0) do {
 		};
 	};
 	case ("lb"): {
-		private ["_ctrl","_display","_index"];
-		_ctrl = _params select 0;
-		_display = ctrlParent _ctrl;
-		_index = lbCurSel _ctrl;
+		private _ctrl = _params select 0;
+		private _display = ctrlParent _ctrl;
+		private _index = lbCurSel _ctrl;
 
-		private ["_target","_vehicle"];
-		_target = objNull;
+		private _target = objNull;
 		{
 			if (name _x == _ctrl lbText _index) exitWith {_target = _x};
 		} forEach (playableunits + switchableunits);
-		_vehicle = vehicle _target;
+		private _vehicle = vehicle _target;
 		FETT_TELEPORT_TARGET = _target;
 
-		private "_idc";
-		_idc = IDC_LB_1;
+		private _idc = IDC_LB_1;
 		lbClear CONTROL;
 		if (_vehicle == _target) then {
-			private "_index";
-			_index = CONTROL lbAdd "Soldier";
+			private _index = CONTROL lbAdd "Soldier";
 			CONTROL lbSetData [_index,"soldier"];
 		} else {
-			private ["_roles","_cargoSize"];
-			_roles = [_vehicle] call BIS_fnc_vehicleRoles;
-			_cargoSize = 0;
+			private _roles = [_vehicle] call BIS_fnc_vehicleRoles;
+			private _cargoSize = 0;
 			{
 				if (_x select 0 == "Cargo") then {
 					_cargoSize = _cargoSize + 1;
@@ -96,8 +85,7 @@ switch (_this select 0) do {
 			} forEach _roles;
 
 			{
-				private "_vehicleRole";
-				_vehicleRole = assignedVehicleRole _x;
+				private _vehicleRole = assignedVehicleRole _x;
 				switch (_vehicleRole select 0) do {
 					case "Driver" : {
 						_roles = _roles - [["Driver",[]]];
@@ -112,8 +100,7 @@ switch (_this select 0) do {
 			} forEach (crew _vehicle);
 
 			if (_cargoSize > 0) then {
-				private "_index";
-				_index = CONTROL lbAdd "Passenger";
+				private _index = CONTROL lbAdd "Passenger";
 				CONTROL lbSetData [_index,"cargo"];
 			};
 
@@ -121,21 +108,18 @@ switch (_this select 0) do {
 			{
 				switch (_x select 0) do {
 					case "Driver" : {
-						private "_index";
-						_index = CONTROL lbAdd "Driver";
+						private _index = CONTROL lbAdd "Driver";
 						CONTROL lbSetData [_index,"driver"];
 					};
 					case "Turret" : {
-						private ["_path","_cfg","_displayName"];
-						_path = _x select 1;
-						_cfg = configfile >> "CfgVehicles" >> (typeOf _vehicle);
+						private _path = _x select 1;
+						private _cfg = configfile >> "CfgVehicles" >> (typeOf _vehicle);
 						{
 							_cfg = (_cfg >> "Turrets") select _x;
 						} forEach _path;
-						_displayName = getText (_cfg >> "gunnerName");
+						private _displayName = getText (_cfg >> "gunnerName");
 
-						private "_index";
-						_index = CONTROL lbAdd _displayName;
+						private _index = CONTROL lbAdd _displayName;
 						CONTROL lbSetData [_index,"turret"];
 						CONTROL lbSetValue [_index,_index];
 
@@ -144,29 +128,25 @@ switch (_this select 0) do {
 				};
 			} forEach _roles;
 
-			private "_index";
-			_index = CONTROL lbAdd "In the vicinity";
+			private _index = CONTROL lbAdd "In the vicinity";
 			CONTROl lbSetData [_index,"vicinity"];
 		};
 	};
 	case ("teleport"): {
-		private ["_ctrl","_display"];
-		_ctrl = _params select 0;
-		_display = ctrlParent _ctrl;
+		private _ctrl = _params select 0;
+		private _display = ctrlParent _ctrl;
 
-		private ["_idc","_index"];
-		_idc = IDC_LB;
-		_index = lbCurSel CONTROL;
+		private _idc = IDC_LB;
+		private _index = lbCurSel CONTROL;
 		if (isNull FETT_TELEPORT_TARGET || isNil "FETT_TELEPORT_TARGET") exitWith {
 			hintC "No player selected!";
-			createDialog "W_RscTeleportDialog";
+			createDialog "FETT_teleporterDialog";
 		};
 
-		private ["_target","_mode"];
-		_target = vehicle FETT_TELEPORT_TARGET;
+		private _target = vehicle FETT_TELEPORT_TARGET;
 		_idc = IDC_LB_1;
 		_index = lbCurSel CONTROL;
-		_mode = if (_index < 0) then {"vicinity"} else {CONTROL lbData _index};
+		private _mode = if (_index < 0) then {"vicinity"} else {CONTROL lbData _index};
 		switch _mode do {
 			case "soldier" : {
 				_pos = _target modelToWorld [0,-2,0];
@@ -180,7 +160,7 @@ switch (_this select 0) do {
 			case "cargo" : {
 				if (damage _target > 0.9) then {
 					hintC "Player not availabe anymore!";
-					createDialog "W_RscTeleportDialog";
+					createDialog "FETT_teleporterDialog";
 				} else {
 					player moveInCargo _target;
 				};
@@ -188,7 +168,7 @@ switch (_this select 0) do {
 			case "turret" : {
 				if (damage _target > 0.9) then {
 					hintC "Player not available anymore!";
-					createDialog "W_RscTeleportDialog";
+					createDialog "FETT_teleporterDialog";
 				} else {
 					player moveInTurret [_target,(FETT_TELEPORT_TURRETS select _index)];
 				};
@@ -196,7 +176,7 @@ switch (_this select 0) do {
 			case "driver" : {
 				if (damage _target > 0.9) then {
 					hintC "Player not available anymore!";
-					createDialog "W_RscTeleportDialog";
+					createDialog "FETT_teleporterDialog";
 				} else {
 					player moveInDriver _target;
 				};
