@@ -6,5 +6,6 @@ class framework_core {
 		class getSetting {};
 		class postInit { postInit = 1; };
 		class preInit { preInit = 1; };
+		class setHC {};
 	};
 };
