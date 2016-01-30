@@ -2,7 +2,6 @@ class framework_core {
 	tag = "FETT_framework";
 	class main {
 		file = "W_FRAMEWORK\core\functions";
-		class executeScripts {};
 		class fetchInitScripts {};
 		class getSetting {};
 		class postInit { postInit = 1; };

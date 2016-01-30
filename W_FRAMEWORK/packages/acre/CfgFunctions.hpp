@@ -3,5 +3,6 @@ class framework_acre {
 	class main {
 		file = "W_FRAMEWORK\packages\acre\functions";
 		class acreSettings {};
+		class acreRadios {};
 	};
 };

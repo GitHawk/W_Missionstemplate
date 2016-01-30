@@ -6,8 +6,8 @@ FETT_framework_postInit = [[],[],[]];
 0 call FETT_framework_fnc_fetchInitScripts;
 
 // Get preinit scrips
-FETT_framework_preInit param [INDEX_CLIENT,["_clientScripts",[],[[]]]];
-FETT_framework_preInit param [INDEX_SERVER,["_serverScripts",[],[[]]]];
+private _clientScripts = FETT_framework_preInit param [INDEX_CLIENT,[],[[]]];
+private _serverScripts = FETT_framework_preInit param [INDEX_SERVER,[],[[]]];
 
 // Execute scripts
 if (hasInterface) then {

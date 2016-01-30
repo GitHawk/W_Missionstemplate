@@ -6,3 +6,4 @@
 #include "packages\friendlyfire\CfgFunctions.hpp"
 #include "packages\loadouts\CfgFunctions.hpp"
 #include "packages\nomap\CfgFunctions.hpp"
+#include "packages\misc\CfgFunctions.hpp"

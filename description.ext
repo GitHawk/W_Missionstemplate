@@ -74,7 +74,7 @@ class Params {
 #include "W_FRAMEWORK\description.ext"			//	W_FRAMEWORK
 
 class ACE_Settings {
-	#include "W_FRAMEWORK\ACE_Settings"			// W_FRAMEWORK
+	#include "W_FRAMEWORK\ACE_Settings.hpp"			// W_FRAMEWORK
 };
 
 class CfgFramework {

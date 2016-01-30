@@ -1,9 +1,9 @@
 #include "..\script_component.hpp"
 
 // Get postinit scripts
-FETT_framework_preInit param [INDEX_CLIENT,["_clientScripts",[],[[]]]];
-FETT_framework_preInit param [INDEX_SERVER,["_serverScripts",[],[[]]]];
-FETT_framework_preInit param [INDEX_HC,["_hcScripts",[],[[]]]];
+private _clientScripts = FETT_framework_preInit param [INDEX_CLIENT,[],[[]]];
+private _serverScripts = FETT_framework_preInit param [INDEX_SERVER,[],[[]]];
+private _hcScripts = FETT_framework_preInit param [INDEX_HC,[],[[]]];
 
 // Execute scripts
 if (hasInterface) then {
@@ -25,7 +25,7 @@ if (!isNil "isHC" && {isHC}) then {
 
 // Error message, just to be sure
 } else {
-	private _message = "W_FRAMEWORK ERROR: isHC isNil during postInit";
+	private _message = "WARNING MESSAGE - W_FRAMEWORK ERROR: isHC isNil during postInit";
 	[_message] call BIS_fnc_error;
 	diag_log _message;
 };

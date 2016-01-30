@@ -5,5 +5,5 @@ private _whitelist = ["radiowhitelist",_radios,"ARRAY"] call FETT_framework_fnc_
 _radios = _radios arrayIntersect _whitelist;
 
 {
-	_obj addAction [format ["%1 holen",_x],{ player addItem _this; },_x];
+	_obj addAction [format ["%1 holen",_x],{ player addItem (_this select 3); },_x];
 } forEach _radios;

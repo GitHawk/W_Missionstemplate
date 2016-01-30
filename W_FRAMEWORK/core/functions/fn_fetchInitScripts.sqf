@@ -1,7 +1,7 @@
 // Get the init config
 private _cfgFramework = missionConfigFile >> "CfgFramework";
 if (!isClass _cfgFramework) exitWith {
-	diag_log "W_FRAMEWORK ERROR: NO CfgFramework GIVEN!";
+	diag_log "WARNING MESSAGE - W_FRAMEWORK ERROR: NO CfgFramework GIVEN!";
 };
 
 {
@@ -10,20 +10,20 @@ if (!isClass _cfgFramework) exitWith {
 	// Get the script
 	private _script = {};
 	switch (true) do {
-		case (isClass (_cfg >> "code")): {
+		case (!isNull (_cfg >> "code")): {
 			_script = compile getText (_cfg >> "code");
 		};
-		case (isClass (_cfg >> "function")): {
+		case (!isNull (_cfg >> "function")): {
 			_script = missionNamespace getVariable [getText (_cfg >> "function"),{}];
 		};
-		case (isClass (_cfg >> "script")): {
-			_script = compile preprocessFileLineNumbers getText (_cfg >> "script");
+		case (!isNull (_cfg >> "file")): {
+			_script = compile preprocessFileLineNumbers getText (_cfg >> "file");
 		};
 	};
 
 	// Script couldn't be resolved
 	if (_script isEqualTo {}) then {
-		diag_log format ["W_FRAMEWORK ERROR: COULD NOT RESOLVE SCRIPT FOR %1",configName _cfg];
+		diag_log format ["WARNING MESSAGE - W_FRAMEWORK ERROR: COULD NOT RESOLVE SCRIPT FOR %1",configName _cfg];
 	} else {
 		// Should this script be activated during post and/or preinit?
 		private _preInit = getNumber (_cfg >> "preinit") == 1;
@@ -44,4 +44,4 @@ if (!isClass _cfgFramework) exitWith {
 			};
 		} forEach [["client",INDEX_CLIENT],["server",INDEX_SERVER],["hc",INDEX_HC]];
 	};
-} forEach ("true" configClasses _cfgFramework;)
+} forEach ("true" configClasses _cfgFramework);
