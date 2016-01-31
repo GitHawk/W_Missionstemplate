@@ -1,8 +1,7 @@
 params [["_attribute","",[""]],"_default",["_type","SCALAR",[""]]];
 _type = toUpper _type;
-_arrayType = toUpper _arrayType;
 
-if !(_type in ["SCALAR","BOOL","ARRAY","STRING"]) throw "W_FRAMEWORK ERROR: BAD TYPE IN FETT_FRAMEWORK_FNC_GETSETTING";
+if !(_type in ["SCALAR","BOOL","ARRAY","STRING","CODE"]) throw "W_FRAMEWORK ERROR: BAD TYPE IN FETT_FRAMEWORK_FNC_GETSETTING";
 
 private _setting = missionConfigFile >> "CfgFrameworkSettings" >> _attribute;
 if (!isClass _setting) exitWith { _default };
