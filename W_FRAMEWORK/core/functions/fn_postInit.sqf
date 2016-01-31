@@ -1,9 +1,9 @@
 #include "..\script_component.hpp"
 
 // Get postinit scripts
-private _clientScripts = FETT_framework_preInit param [INDEX_CLIENT,[],[[]]];
-private _serverScripts = FETT_framework_preInit param [INDEX_SERVER,[],[[]]];
-private _hcScripts = FETT_framework_preInit param [INDEX_HC,[],[[]]];
+private _clientScripts = FETT_framework_postInit param [INDEX_CLIENT,[],[[]]];
+private _serverScripts = FETT_framework_postInit param [INDEX_SERVER,[],[[]]];
+private _hcScripts = FETT_framework_postInit param [INDEX_HC,[],[[]]];
 
 // Execute scripts
 if (hasInterface) then {
