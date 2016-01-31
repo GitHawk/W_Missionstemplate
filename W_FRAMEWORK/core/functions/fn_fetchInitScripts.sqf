@@ -1,3 +1,5 @@
+#include "..\script_component.hpp"
+
 // Get the init config
 private _cfgFramework = missionConfigFile >> "CfgFramework";
 if (isNull _cfgFramework) exitWith {
