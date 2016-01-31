@@ -1,4 +1,4 @@
-if (0 call ["nomap",{false},"CODE"] call FETT_framework_fnc_getSetting) then {
+if (0 call (["nomap",{false},"CODE"] call FETT_framework_fnc_getSetting)) then {
 	[{
 		params ["","_pfh"];
 		if (!isNull (findDisplay 46)) then {
