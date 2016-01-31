@@ -1,6 +1,6 @@
 // Get the init config
 private _cfgFramework = missionConfigFile >> "CfgFramework";
-if (!isClass _cfgFramework) exitWith {
+if (isNull _cfgFramework) exitWith {
 	diag_log "WARNING MESSAGE - W_FRAMEWORK ERROR: NO CfgFramework GIVEN!";
 };
 

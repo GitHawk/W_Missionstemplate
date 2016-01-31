@@ -4,7 +4,7 @@ _type = toUpper _type;
 if !(_type in ["SCALAR","BOOL","ARRAY","STRING","CODE"]) throw "W_FRAMEWORK ERROR: BAD TYPE IN FETT_FRAMEWORK_FNC_GETSETTING";
 
 private _setting = missionConfigFile >> "CfgFrameworkSettings" >> _attribute;
-if (!isClass _setting) exitWith { _default };
+if (isNull _setting) exitWith { _default };
 
 private _val = 0;
 switch (_type) do {
