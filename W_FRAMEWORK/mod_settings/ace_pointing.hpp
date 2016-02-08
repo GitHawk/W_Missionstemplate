@@ -4,7 +4,7 @@ class ace_finger_enabled {
 	force = 1;
 };
 class ace_finger_maxRange {
-	value = 4;
+	value = 6;
 	typeName = "SCALAR";
 	force = 1;
 };
