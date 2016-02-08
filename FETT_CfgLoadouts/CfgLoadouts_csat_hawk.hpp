@@ -133,7 +133,7 @@ class MEDIC_TL : MEDIC {
     class Gear : O_NormalSoldier {
         O_EasyTrackPDA
     };
-    onApplyLoadout = "_obj addItem 'ACRE_PRC152'; _obj setVariable ['ace_medical_medicClass',2,true];"
+    onApplyLoadout = "_obj addItem 'ACRE_PRC152'; _obj setVariable ['ace_medical_medicClass',2,true];";
 };
 
 class DESIGNATED_MARKSMAN : AUTORIFLEMAN {

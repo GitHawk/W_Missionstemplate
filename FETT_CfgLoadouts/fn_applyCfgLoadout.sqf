@@ -16,15 +16,6 @@ if (!isClass _loadout) exitWith {
     diag_log format ["W Loadout error: class %1 not found", _class];
 };
 
-removeAllWeapons _obj;
-removeAllItems _obj;
-removeAllAssignedItems _obj;
-removeUniform _obj;
-removeVest _obj;
-removeBackpack _obj;
-removeHeadgear _obj;
-removeGoggles _obj;
-
 // Reset medical and logistical status
 _obj setVariable ['ace_isEngineer', 0, true];
 _obj setVariable ["ace_medical_medicClass", 0, true];

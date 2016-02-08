@@ -19,14 +19,8 @@ class Header
     maxPlayers = 20;
 };
 
-// MISSIONSPARAMETER - Standard, nur für den HC. Muss unbedingt der erste Parameter bleiben!
-class Params {
-    #include "W_FRAMEWORK\paramHC.hpp"             // W_FRAMEWORK
-};
-
 // DEFINIERTES ENDE - Dieses Ende wird angezeigt, wenn dem Spieler ein DLC fehlt.
 class CfgDebriefing {
-    #include "W_FRAMEWORK\endingDLC.hpp"         // W_FRAMEWORK
     class end_win
     {
         title = "Mission Abgeschlossen";
@@ -91,6 +85,7 @@ class CfgFrameworkSettings {
 // MISSIONSPARAMETER - Standard, nur für den HC. Muss unbedingt der erste Parameter bleiben!
 class CfgFunctions {
     #include "W_FRAMEWORK\CfgFunctions.hpp"         // W_FRAMEWORK
+    #include "FUPS\CfgFunctions.hpp"                // FUPS
     #include "FETT_CfgLoadouts\CfgFunctions.hpp" // Loadouts
 };
 #include "FETT_CfgLoadouts\CfgLoadouts.hpp"      // Loadouts
