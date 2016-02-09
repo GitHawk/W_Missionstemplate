@@ -25,14 +25,14 @@ switch (side _obj) do {
 };
 
 private _code = {};
-if (!hasInterface) then {
+if (hasInterface) then {
+    _code = compile preprocessFileLineNumbers _file;
+} else {
     _code = missionNamespace getVariable [format ["loadouts_%1", side _obj], ""];
     if (_code == "") then {
         _code = compile preprocessFileLineNumbers _file;
         missionNamespace setVariable [format ["loadouts_%1", side _obj], _code];
     };
-} else {
-    _code = compile preprocessFileLineNumbers _file;
 };
 
 [{
