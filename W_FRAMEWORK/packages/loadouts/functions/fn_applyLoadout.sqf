@@ -1,6 +1,8 @@
 params [["_obj", objNull, [objNull]]];
 if (!hasInterface && isNull _obj) exitWith {};
-_obj = player;
+if (isNull _obj) then {
+    _obj = player;
+};
 
 private _loadout = _obj getVariable ["loadout",""];
 if (_loadout == "") exitWith {};
