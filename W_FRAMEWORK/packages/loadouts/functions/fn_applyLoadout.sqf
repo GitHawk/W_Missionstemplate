@@ -1,5 +1,5 @@
 params [["_obj", objNull, [objNull]]];
-if (!hasInterface && isNull _obj) exitWith {};
+if (!hasInterface && {isNull _obj}) exitWith {};
 if (isNull _obj) then {
     _obj = player;
 };
