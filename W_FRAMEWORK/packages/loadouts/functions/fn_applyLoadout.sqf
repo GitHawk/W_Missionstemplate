@@ -6,6 +6,7 @@ if (isNull _obj) then {
 
 private _loadout = _obj getVariable ["loadout",""];
 if (_loadout == "") exitWith {};
+private _side = _obj getVariable ["side", str (side _obj)];
 
 removeAllWeapons _obj;
 removeAllItems _obj;
@@ -17,21 +18,21 @@ removeHeadgear _obj;
 removeGoggles _obj;
 
 private _file = "";
-switch (side _obj) do {
-	case (civilian): { _file = "loadouts\civilian_loadout.sqf"; };
-	case (east): { _file = "loadouts\east_loadout.sqf"; };
-	case (independent): { _file = "loadouts\independent_loadout.sqf"; };
-	case (west): { _file = "loadouts\west_loadout.sqf"; };
+switch (_side) do {
+	case ("civilian"): { _file = "loadouts\civilian_loadout.sqf"; };
+	case ("east"): { _file = "loadouts\east_loadout.sqf"; };
+	case ("independent"): { _file = "loadouts\independent_loadout.sqf"; };
+	case ("west"): { _file = "loadouts\west_loadout.sqf"; };
 };
 
 private _code = {};
 if (hasInterface) then {
     _code = compile preprocessFileLineNumbers _file;
 } else {
-    _code = missionNamespace getVariable [format ["loadouts_%1", side _obj], ""];
+    _code = missionNamespace getVariable [format ["loadouts_%1", _side], ""];
     if (_code == "") then {
         _code = compile preprocessFileLineNumbers _file;
-        missionNamespace setVariable [format ["loadouts_%1", side _obj], _code];
+        missionNamespace setVariable [format ["loadouts_%1", _side], _code];
     };
 };
 
