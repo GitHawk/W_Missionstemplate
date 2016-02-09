@@ -1,12 +1,23 @@
+/*
+ * Argument:
+ * 0: Target <OBJECT> (optional if player)
+ * 1: Loadout <STRING> (optional)
+ * 2: Side <STRING> (optional)
+ *
+ * Example:
+ * [] call FETT_framework_fnc_applyLoadout
+ * [_unit] call FETT_framework_fnc_applyLoadout
+ * [_unit, "SNIPER"] call FETT_framework_fnc_applyLoadout
+ * [_unit, "SNIPER", "east"] call FETT_framework_fnc_applyLoadout
+ */
+
 params [["_obj", objNull, [objNull]]];
 if (!hasInterface && {isNull _obj}) exitWith {};
 if (isNull _obj) then {
     _obj = player;
 };
-
-private _loadout = _obj getVariable ["loadout",""];
+params ["", ["_loadout", _obj getVariable ["loadout", ""], [""]], ["_side", _obj getVariable ["side", str (side _obj)], [""]]];
 if (_loadout == "") exitWith {};
-private _side = _obj getVariable ["side", str (side _obj)];
 
 removeAllWeapons _obj;
 removeAllItems _obj;
