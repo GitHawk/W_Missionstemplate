@@ -1,27 +1,56 @@
-private _loadout = player getVariable ["loadout",""];
+/*
+ * Argument:
+ * 0: Target <OBJECT> (optional if player)
+ * 1: Loadout <STRING> (optional)
+ * 2: Side <STRING> (optional)
+ *
+ * Example:
+ * [] call FETT_framework_fnc_applyLoadout
+ * [_unit] call FETT_framework_fnc_applyLoadout
+ * [_unit, "SNIPER"] call FETT_framework_fnc_applyLoadout
+ * [_unit, "SNIPER", "east"] call FETT_framework_fnc_applyLoadout
+ */
+
+params [["_obj", objNull, [objNull]]];
+if (!hasInterface && {isNull _obj}) exitWith {};
+if (isNull _obj) then {
+    _obj = player;
+};
+params ["", ["_loadout", _obj getVariable ["loadout", ""], [""]], ["_side", _obj getVariable ["side", str (side _obj)], [""]]];
 if (_loadout == "") exitWith {};
 
-removeAllWeapons player;
-removeAllItems player;
-removeAllAssignedItems player;
-removeUniform player;
-removeVest player;
-removeBackpack player;
-removeHeadgear player;
-removeGoggles player;
+removeAllWeapons _obj;
+removeAllItems _obj;
+removeAllAssignedItems _obj;
+removeUniform _obj;
+removeVest _obj;
+removeBackpack _obj;
+removeHeadgear _obj;
+removeGoggles _obj;
 
 private _file = "";
-switch (side player) do {
-	case (civilian): { _file = "loadouts\civilian_loadout.sqf"; };
-	case (east): { _file = "loadouts\east_loadout.sqf"; };
-	case (independent): { _file = "loadouts\independent_loadout.sqf"; };
-	case (west): { _file = "loadouts\west_loadout.sqf"; };
+switch (_side) do {
+    case ("civilian"): { _file = "loadouts\civilian_loadout.sqf"; };
+    case ("east"): { _file = "loadouts\east_loadout.sqf"; };
+    case ("independent"): { _file = "loadouts\independent_loadout.sqf"; };
+    case ("west"): { _file = "loadouts\west_loadout.sqf"; };
+};
+
+private _code = {};
+if (hasInterface) then {
+    _code = compile preprocessFileLineNumbers _file;
+} else {
+    _code = missionNamespace getVariable [format ["loadouts_%1", _side], ""];
+    if (_code == "") then {
+        _code = compile preprocessFileLineNumbers _file;
+        missionNamespace setVariable [format ["loadouts_%1", _side], _code];
+    };
 };
 
 [{
-	params ["_args","_pfh"];
-	_args params ["_loadout","_file"];
+    params ["_args", "_pfh"];
+    _args params ["_loadout", "_obj", "_code"];
 
-	[_loadout,player] call compile preprocessFileLineNumbers _file;
-	[_pfh] call CBA_fnc_removePerFramehandler;
-},0,[_loadout,_file]] call CBA_fnc_addPerFramehandler;
+    [_loadout, _obj] call _code;
+    [_pfh] call CBA_fnc_removePerFramehandler;
+}, 0, [_loadout, _obj, _code]] call CBA_fnc_addPerFramehandler;
