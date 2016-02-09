@@ -30,10 +30,10 @@ removeGoggles _obj;
 
 private _file = "";
 switch (_side) do {
-	case ("civilian"): { _file = "loadouts\civilian_loadout.sqf"; };
-	case ("east"): { _file = "loadouts\east_loadout.sqf"; };
-	case ("independent"): { _file = "loadouts\independent_loadout.sqf"; };
-	case ("west"): { _file = "loadouts\west_loadout.sqf"; };
+    case ("civilian"): { _file = "loadouts\civilian_loadout.sqf"; };
+    case ("east"): { _file = "loadouts\east_loadout.sqf"; };
+    case ("independent"): { _file = "loadouts\independent_loadout.sqf"; };
+    case ("west"): { _file = "loadouts\west_loadout.sqf"; };
 };
 
 private _code = {};
@@ -48,9 +48,9 @@ if (hasInterface) then {
 };
 
 [{
-	params ["_args", "_pfh"];
-	_args params ["_loadout", "_obj", "_code"];
+    params ["_args", "_pfh"];
+    _args params ["_loadout", "_obj", "_code"];
 
-	[_loadout, _obj] call _code;
-	[_pfh] call CBA_fnc_removePerFramehandler;
+    [_loadout, _obj] call _code;
+    [_pfh] call CBA_fnc_removePerFramehandler;
 }, 0, [_loadout, _obj, _code]] call CBA_fnc_addPerFramehandler;
