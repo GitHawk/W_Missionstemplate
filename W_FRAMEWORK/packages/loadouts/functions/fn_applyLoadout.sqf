@@ -1,28 +1,40 @@
-private _loadout = player getVariable ["loadout",""];
-private _faction = player getVariable ["faction", faction player];
-if (_loadout == "") exitWith {};
+/*
+ * Argument:
+ * 0: Target <OBJECT> (optional if player)
+ * 1: Loadout <STRING> (optional)
+ * 2: Side <STRING> (optional)
+ *
+ * Example:
+ * [] call FETT_framework_fnc_applyLoadout
+ * [_unit] call FETT_framework_fnc_applyLoadout
+ * [_unit, "SNIPER"] call FETT_framework_fnc_applyLoadout
+ * [_unit, "SNIPER", "east"] call FETT_framework_fnc_applyLoadout
+ */
 
-removeAllWeapons player;
-removeAllItems player;
-removeAllAssignedItems player;
-removeUniform player;
-removeVest player;
-removeBackpack player;
-removeHeadgear player;
-removeGoggles player;
+params [["_obj", objNull, [objNull]]];
+if (!hasInterface && {isNull _obj}) exitWith {};
+if (isNull _obj) then {
+    _obj = player;
+};
+params ["", ["_loadout", _obj getVariable ["loadout", ""], [""]], ["_side", _obj getVariable ["side", str (side _obj)], [""]]];
+if (_loadout == "") exitWith {};
+private _faction = _obj getVariable ["faction", faction _obj];
+
+removeAllWeapons _obj;
+removeAllItems _obj;
+removeAllAssignedItems _obj;
+removeUniform _obj;
+removeVest _obj;
+removeBackpack _obj;
+removeHeadgear _obj;
+removeGoggles _obj;
 
 private _file = "";
-switch (side player) do {
-    case (civilian): { _file = "loadouts\civilian_loadout.sqf"; };
-    case (east): { _file = "loadouts\east_loadout.sqf"; };
-    case (independent): { _file = "loadouts\independent_loadout.sqf"; };
-    case (west): { _file = "loadouts\west_loadout.sqf"; };
-};
 
 [{
     params ["_args","_pfh"];
-    _args params ["_loadout","_faction"];
+    _args params ["_loadout","_faction", "_obj"];
 
-    [_loadout, _faction, player] call FETT_fnc_applyCfgLoadout;
+    [_loadout, _faction, _obj] call FETT_fnc_applyCfgLoadout;
     [_pfh] call CBA_fnc_removePerFramehandler;
-},0,[_loadout, _faction]] call CBA_fnc_addPerFramehandler;
+},0,[_loadout, _faction, _obj]] call CBA_fnc_addPerFramehandler;

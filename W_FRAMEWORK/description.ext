@@ -1,4 +1,4 @@
-w_framework_version = "4v0";
+w_framework_version = "v4.1.0";
 
 enableDebugConsole = 1;
 respawn = 3;

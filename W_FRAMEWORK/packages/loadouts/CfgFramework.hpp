@@ -1,5 +1,5 @@
 class loadouts {
-	function = "FETT_framework_fnc_applyLoadout";
+	code = "[player] call FETT_framework_fnc_applyLoadout";
 	client = 1;
 	postinit = 1;
 };
