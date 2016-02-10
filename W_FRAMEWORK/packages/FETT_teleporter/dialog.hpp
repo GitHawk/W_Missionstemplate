@@ -141,7 +141,7 @@ class FETT_teleporterDialog {
 		};
 		class ok
 		{
-			onButtonClick = "['teleport',_this] call FETT_fnc_W_RscTeleportInit;";
+			onButtonClick = "['teleport',_this] call FETT_teleporter_fnc_dialog;";
 			animTextureDefault = "#(argb,8,8,3)color(1,1,1,1)";
 			animTextureDisabled = "#(argb,8,8,3)color(1,1,1,1)";
 			animTextureFocused = "#(argb,8,8,3)color(1,1,1,1)";
@@ -266,7 +266,7 @@ class FETT_teleporterDialog {
 			w = 0.123795 * safezoneW;
 			h = 0.175947 * safezoneH;
 
-			onLBSelChanged = "['lb',_this] call FETT_fnc_W_RscTeleportInit;";
+			onLBSelChanged = "['lb',_this] call FETT_teleporter_fnc_dialog;";
 		};
 		class lb_1: lb
 		{
@@ -307,7 +307,7 @@ class FETT_teleporterDialog {
 			w = 0.0412652 * safezoneW;
 			h = 0.0285914 * safezoneH;
 
-			onCheckBoxesSelChanged = "['cb',_this] call FETT_fnc_W_RscTeleportInit;";
+			onCheckBoxesSelChanged = "['cb',_this] call FETT_teleporter_fnc_dialog;";
 		};
 		class cb_1: cb
 		{
@@ -320,7 +320,7 @@ class FETT_teleporterDialog {
 			w = 0.0412652 * safezoneW;
 			h = 0.0285914 * safezoneH;
 
-			onCheckBoxesSelChanged = "['cb',_this] call FETT_fnc_W_RscTeleportInit;";
+			onCheckBoxesSelChanged = "['cb',_this] call FETT_teleporter_fnc_dialog;";
 		};
 		class cb_2: cb
 		{
@@ -333,7 +333,7 @@ class FETT_teleporterDialog {
 			w = 0.0412652 * safezoneW;
 			h = 0.0285914 * safezoneH;
 
-			onCheckBoxesSelChanged = "['cb',_this] call FETT_fnc_W_RscTeleportInit;";
+			onCheckBoxesSelChanged = "['cb',_this] call FETT_teleporter_fnc_dialog;";
 		};
 		class cb_3: cb
 		{
@@ -346,7 +346,7 @@ class FETT_teleporterDialog {
 			w = 0.0412652 * safezoneW;
 			h = 0.0285914 * safezoneH;
 
-			onCheckBoxesSelChanged = "['cb',_this] call FETT_fnc_W_RscTeleportInit;";
+			onCheckBoxesSelChanged = "['cb',_this] call FETT_teleporter_fnc_dialog;";
 		};
 		class pic
 		{
