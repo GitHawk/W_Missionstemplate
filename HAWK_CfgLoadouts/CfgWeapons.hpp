@@ -3,39 +3,39 @@
 
 // Scopes
 class ACO : WeaponClass {
-    scope_pool[] = {"optic_Aco"};
+    scopes[] = {"optic_Aco"};
 };
 
 class HAMR : WeaponClass {
-    scope_pool[] = {"optic_Hamr"};
+    scopes[] = {"optic_Hamr"};
 };
 
 class ARCO : WeaponClass {
-    scope_pool[] = {"optic_Arco"};
+    scopes[] = {"optic_Arco"};
 };
 
 class DMS : WeaponClass {
-    scope_pool[] = {"optic_DMS"};
+    scopes[] = {"optic_DMS"};
 };
 
 class SOS : WeaponClass {
-    scope_pool[] = {"optic_SOS"};
+    scopes[] = {"optic_SOS"};
 };
 
 class LRPS : WeaponClass {
-    scope_pool[] = {"optic_LRPS"};
+    scopes[] = {"optic_LRPS"};
 };
 
 class Nightstalker : WeaponClass {
-    scope_pool[] = {"optic_Nightstalker"};
+    scopes[] = {"optic_Nightstalker"};
 };
 
 class Holosight : WeaponClass {
-    scope_pool[] = {"optic_Holosight"};
+    scopes[] = {"optic_Holosight"};
 };
 
 class Holosight_SMG : WeaponClass {
-    scope_pool[] = {"optic_Holosight_smg"};
+    scopes[] = {"optic_Holosight_smg"};
 }
 
 // Pistols
@@ -83,7 +83,7 @@ class Sting : Holosight_SMG {
     magazinesMax = 3;
 };
 class PDW2000 : Holosight_SMG {
-    weapon_pool[] = {"SMG_02_F"};
+    weapon_pool[] = {"hgun_PDW2000_F"};
     magazine = "30Rnd_9x21_Mag";
     magazinesMax = 3;
 };
@@ -193,7 +193,7 @@ class I_SDAR : B_SDAR {
 // Designated marksman rifles
 class MXM : MX {
     weapon_pool[] = {"arifle_MXM_F", "arifle_MXM_Black_F"};
-    scope_pool[] = {"optic_DMS"};
+    scopes[] = {"optic_DMS"};
     weaponRestingAttachment_pool[] = {"bipod_01_F_snd"};
     barrelAttachment_pool[] = {"acc_pointer_IR"};
     muzzleAttachment_pool[] = {"muzzle_snds_H"};

@@ -148,19 +148,22 @@ helmet_pool[] = { \
 
 // Items
 #define Binocular \
-binocular_pool[] = {"Binocular"};
+binocular[] = {"Binocular"};
 
 #define Rangefinder \
-binocular_pool[] = {"Rangefinder"};
+binocular[] = {"Rangefinder"};
 
 #define B_Laserdesignator \
-binocular_pool[] = {"Laserdesignator"};
+binocular[] = {"Laserdesignator", "Laserbatteries"};
 
 #define O_Laserdesignator \
-binocular_pool[] = {"Laserdesignator_02"};
+binocular[] = {"Laserdesignator_02", "Laserbatteries"};
 
 #define I_Laserdesignator \
-binocular_pool[] = {"Laserdesignator_03"};
+binocular[] = {"Laserdesignator_03", "Laserbatteries"};
+
+#define NOGPS \
+gps_pool[] = {};
 
 #define GPS \
 gps_pool[] = {"ItemGPS"};
@@ -201,16 +204,31 @@ goggle_pool[] = {"G_O_Diving"};
 #define I_Diver_Goggle \
 goggle_pool[] = {"G_I_Diving"};
 
+#define Team_Radio \
+radios[] = {"ACRE_PRC343"};
+
+#define Team_Medium_Radio \
+radios[] = {"ACRE_PRC343", "ACRE_PRC152"};
+
+#define Team_Large_Radio \
+radios[] = {"ACRE_PRC343", "ACRE_PRC117F"};
+
+#define Team_Medium_Large_Radio \
+radios[] = {"ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC117F"};
+
+#define Team_Large_Large_Radio \
+radios[] = {"ACRE_PRC343", "ACRE_PRC117F", "ACRE_PRC117F"};
+
 class BasicGear : GearClass {
     helmet_pool[] = {};
     goggle_pool[] = {};
     nightvision_pool[] = {};
-    binocular_pool[] = {};
-    map_pool[] = {"ItemMap"};
     gps_pool[] = {};
-    radio_pool[] = {};
     compass_pool[] = {"ItemCompass"};
     clock_pool[] = {"ItemWatch"};
+    map_pool[] = {"ItemMap"};
+    binocular[] = {};
+    Team_Radio
 };
 
 class B_BasicGearNVG : BasicGear {
@@ -227,15 +245,12 @@ class I_BasicGearNVG : BasicGear {
 
 class B_NormalSoldier : B_BasicGearNVG {
     B_Soldier_Helmet
-    radio_pool[] = {"ACRE_PRC343"};
 };
 
 class O_NormalSoldier : O_BasicGearNVG {
     O_Soldier_Helmet
-    radio_pool[] = {"ACRE_PRC343"};
 };
 
 class I_NormalSoldier : I_BasicGearNVG {
     O_Soldier_Helmet
-    radio_pool[] = {"ACRE_PRC343"};
 };

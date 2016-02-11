@@ -29,12 +29,10 @@ removeBackpack _obj;
 removeHeadgear _obj;
 removeGoggles _obj;
 
-private _file = "";
-
 [{
     params ["_args","_pfh"];
     _args params ["_loadout","_faction", "_obj"];
 
-    [_loadout, _faction, _obj] call FETT_fnc_applyCfgLoadout;
+    [_loadout, _faction, _obj] call HAWK_fnc_applyCfgLoadout;
     [_pfh] call CBA_fnc_removePerFramehandler;
 },0,[_loadout, _faction, _obj]] call CBA_fnc_addPerFramehandler;

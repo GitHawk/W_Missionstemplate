@@ -6,15 +6,15 @@
 
 class CfgLoadouts {
     class BLU_F {
-        #include "CfgLoadouts_nato_hawk.hpp"
+        #include "CfgLoadouts_nato.hpp"
     };
     class OPF_F {
-        #include "CfgLoadouts_csat_hawk.hpp"
+        #include "CfgLoadouts_csat.hpp"
     };
     class IND_F {
-        #include "CfgLoadouts_aaf_hawk.hpp"
+        #include "CfgLoadouts_aaf.hpp"
     };
     class CIV_F {
-        #include "CfgLoadouts_civ_hawk.hpp"
+        #include "CfgLoadouts_civ.hpp"
     };
 };

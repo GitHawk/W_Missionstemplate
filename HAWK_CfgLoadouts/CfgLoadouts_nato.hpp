@@ -9,15 +9,19 @@ class CO : SoldierClass {
         class handGun : B_Officer_Pistol {};
     };
     class Gear : B_NormalSoldier {
+		B_EasyTrackPDA
         B_Officer_Helmet
         Rangefinder
-        B_EasyTrackPDA
+        Team_Medium_Large_Radio
     };
     class Items : SmallMedicMaterial {};
-    onApplyLoadout = "_obj addItem 'ACRE_PRC117F';";
 };
 
-class XO : CO {};
+class XO : CO {
+    class Gear : Gear {
+        O_EasyTrackLAPTOP
+    };
+};
 
 class COLO : XO {
     class Gear : Gear {
@@ -30,20 +34,27 @@ class MIO : COLO {
         B_EasyTrackLAPTOP
     };
     class Items : Items {
-        other[] = {"B_UavTerminal", "ACE_microDAGR"};
+        other[] = {"B_UavTerminal"};
     };
 };
 
 class JTAC : XO {
+    class Container : Container {
+        O_Medium_Backpack
+    };
     class Weapons : Weapons {
-        class primaryWeapon : MXGL {};
+        class primaryWeapon : MXGL {
+            optional[] = {
+                {"1Rnd_SmokeRed_Grenade_shell",8}
+            };
+        };
         class handGun : B_Pistol {};
     };
     class Gear : Gear {
+		GPS
         B_Advanced_Helmet
         B_Laserdesignator
     };
-    onApplyLoadout = "_obj addMagazine 'Laserbatteries';";
 };
 
 class RIFLEMAN : SoldierClass {
@@ -101,6 +112,18 @@ class EXPLOSIVE_SPECIALIST : RIFLEMAN {
     class Items : ExplosiveMaterial {};
 };
 
+class COMBAT_ENGINEER : RIFLEMAN {
+    class Weapons : Weapons {
+        class primaryWeapon : MX {};
+    };
+    class Items : Items {
+        other[] = {
+            "ToolKit",
+            "ACE_DefusalKit"
+        };
+    };
+};
+
 class COMBAT_MEDIC : RIFLEMAN {
     class Container : Container {
         B_Small_Backpack
@@ -109,7 +132,6 @@ class COMBAT_MEDIC : RIFLEMAN {
         class primaryWeapon : MXC {};
     };
     class Items : CombatMedicMaterial {};
-    onApplyLoadout = "_obj setVariable ['ace_medical_medicClass',2,true];";
 };
 
 class MEDIC : COMBAT_MEDIC {
@@ -125,8 +147,8 @@ class MEDIC : COMBAT_MEDIC {
 class MEDIC_TL : MEDIC {
     class Gear : B_NormalSoldier {
         B_EasyTrackPDA
+        Team_Medium_Radio
     };
-    onApplyLoadout = "_obj addItem 'ACRE_PRC152'; _obj setVariable ['ace_medical_medicClass',2,true];";
 };
 
 class DESIGNATED_MARKSMAN : AUTORIFLEMAN {
@@ -210,7 +232,7 @@ class HMG : AUTORIFLEMAN {
         class primaryWeapon : MX {};
     };
     class Gear : Gear {
-        binocular_pool[] = {};
+        binocular[] = {};
     };
 };
 
@@ -230,6 +252,22 @@ class GRENADIER : AUTORIFLEMAN {
     class Items : BasicMedicMaterial {};
 };
 
+class JTAC_RFL : GRENADIER {
+    class Container : Container {
+        B_Medium_Backpack
+    };
+    class primaryWeapon : MXGL {
+        optional[] = {
+            {"1Rnd_SmokeRed_Grenade_shell", 8}
+        };
+    };
+    class Gear : Gear {
+        GPS
+        B_Laserdesignator
+		Team_Large_Radio
+    };
+};
+
 class FIRETEAMLEADER : GRENADIER {
     class Gear : Gear {
         Binocular
@@ -246,8 +284,24 @@ class SQUADLEADER : GRENADIER {
     class Gear : Gear {
         Rangefinder
         B_EasyTrackPDA
+        Team_Medium_Radio
+	};
+};
+
+class PLATOONLEADER : SQUADLEADER {
+    class Gear : Gear {
+        Team_Large_Radio
     };
-    onApplyLoadout = "_obj addItem 'ACRE_PRC117F';";
+};
+
+class PLATOONSERGEANT : GRENADIER {
+    class Container : Container {
+        B_Medium_Backpack
+    };
+    class Gear : Gear {
+        Rangefinder
+		Team_Large_Radio
+    };
 };
 
 class RECON_SCOUT : SoldierClass {
@@ -259,6 +313,7 @@ class RECON_SCOUT : SoldierClass {
     class Weapons : Weapons {
         class primaryWeapon : MX {
             barrelAttachment_pool[] = {"muzzle_snds_H"};
+            scopes[] += {"optic_Nightstalker"};
             magazinesMax = 6;
         };
         class handGun : B_Pistol {
@@ -270,7 +325,6 @@ class RECON_SCOUT : SoldierClass {
         Rangefinder
     };
     class Items : B_SOFMedicMaterial {};
-    onApplyLoadout = "_obj addItem 'optic_Nightstalker';";
 };
 
 class RECON_TL : RECON_SCOUT {
@@ -279,15 +333,20 @@ class RECON_TL : RECON_SCOUT {
     };
     class Gear : Gear {
         B_EasyTrackPDA
+        Team_Large_Radio
     };
-    onApplyLoadout = "_obj addItem 'ACRE_PRC117F';";
 };
 
 class RECON_ENGINEER : RECON_SCOUT {
     class Container : Container {
         B_Big_Backpack
     };
-    onApplyLoadout = "_obj addItem 'ToolKit'; _obj addItem 'ACE_DefusalKit';";
+    class Items : Items {
+        other[] = {
+            "ToolKit",
+            "ACE_DefusalKit"
+        };
+    };
 };
 
 class RECON_MEDIC : RECON_SCOUT {
@@ -295,7 +354,6 @@ class RECON_MEDIC : RECON_SCOUT {
         B_Big_Backpack
     };
     class Items : B_SOFBigMedicMaterial {};
-    onApplyLoadout = "_obj setVariable ['ace_medical_medicClass',2,true];";
 };
 
 class RECON_DM : RECON_SCOUT {
@@ -336,7 +394,9 @@ class SNIPER : SoldierClass {
         B_SOF_Vest
     };
     class Weapons : Weapons {
-        class primaryWeapon : LRR {};
+        class primaryWeapon : LRR {
+            scopes[] += {"optic_Nightstalker"};
+        };
         class handGun : B_Pistol {
             barrelAttachment_pool[] = {"muzzle_snds_L"};
         };
@@ -345,7 +405,6 @@ class SNIPER : SoldierClass {
         B_Sniper_Helmet
     };
     class Items : B_SOFMedicMaterial {};
-    onApplyLoadout = "_obj addItem 'optic_Nightstalker';";
 };
 
 class SPOTTER : SNIPER {
@@ -354,14 +413,20 @@ class SPOTTER : SNIPER {
     };
     class Weapons : Weapons {
         class primaryWeapon : ABR {
+            scopes[] += {"optic_Nightstalker"};
             magazinesMax = 8;
             optional[] = {{"7Rnd_408_Mag", 7}};
         };
     };
     class Gear : Gear {
         B_EasyTrackPDA
+		B_Laserdesignator
+        Team_Large_Radio
+        other[] = {
+            "ACE_ATragMX",
+            "ACE_Kestrel4500"
+        };
     };
-    onApplyLoadout = "_obj addItem 'optic_Nightstalker'; _obj addItem 'ACE_ATragMX'; _obj addItem 'ACE_Kestrel4500'; _obj addItem 'ACRE_PRC117F';";
 };
 
 class CREW : SoldierClass {
@@ -388,8 +453,8 @@ class COMMANDER : CREW {
     };
     class Gear : Gear {
         B_EasyTrackPDA
+        Team_Large_Radio
     };
-    onApplyLoadout = "_obj addItem 'ACRE_PRC117F';";
 };
 
 class HELICREW : CREW {
@@ -399,8 +464,8 @@ class HELICREW : CREW {
     };
     class Gear : Gear {
         B_Heli_Helmet
+        Team_Large_Radio
     };
-    onApplyLoadout = "_obj addItem 'ACRE_PRC117F';";
 };
 
 class HELIPILOT : COMMANDER {
@@ -429,18 +494,22 @@ class LOGISTICS : SoldierClass {
         Belt_Vest
         B_Small_Backpack
     };
-    class Gear : B_NormalSoldier {
-        B_Logistic_Helmet
-        B_EasyTrackPDA
-    };
     class Weapons : Weapons {
         class primaryWeapon : Vermin {};
         class handGun : B_Pistol {};
     };
-    class Items : SmallMedicMaterial {
-        other[] = {"B_UavTerminal", "ACE_microDAGR"};
+    class Gear : B_NormalSoldier {
+        B_Logistic_Helmet
+        B_EasyTrackPDA
+        Team_Large_Radio
     };
-    onApplyLoadout = "_obj addItem 'ToolKit'; _obj setVariable ['ACE_IsEngineer', 1, true]; _obj addItem 'ACRE_PRC117F';";
+    class Items : SmallMedicMaterial {
+         other[] = {
+             "I_UavTerminal",
+             "ToolKit"
+         };
+    };
+    onApplyLoadout = "_obj setVariable ['ace_IsEngineer', 1, true];";
 };
 
 class LOGISTICS_TL : LOGISTICS {
@@ -458,17 +527,16 @@ class DIVER : SoldierClass {
         B_Diver_Vest
         Small_Backpack
     };
-    class Gear : B_NormalSoldier {
-        helmet_pool[] = {};
-        B_Diver_Goggle
-        B_Laserdesignator
-    };
     class Weapons : Weapons {
         class primaryWeapon : B_SDAR {};
         class handGun : B_Pistol {
             barrelAttachment_pool[] = {"muzzle_snds_L"};
         };
     };
+    class Gear : B_NormalSoldier {
+        helmet_pool[] = {};
+        B_Diver_Goggle
+        B_Laserdesignator
+    };
     class Items : B_SOFMedicMaterial {};
-    onApplyLoadout = "_obj addMagazine 'Laserbatteries';";
 };

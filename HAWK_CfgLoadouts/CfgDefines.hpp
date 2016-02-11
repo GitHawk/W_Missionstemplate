@@ -8,12 +8,12 @@ class GearClass {
     helmet_pool[] = {};
     goggle_pool[] = {};
     nightvision_pool[] = {};
-    binocular_pool[] = {};
     map_pool[] = {};
     gps_pool[] = {};
-    radio_pool[] = {};
     compass_pool[] = {};
     clock_pool[] = {};
+    radios[] = {};
+    binocular[] = {};
 };
 
 class WeaponClass {
@@ -21,7 +21,7 @@ class WeaponClass {
     muzzleAttachment_pool[] = {};
     weaponRestingAttachment_pool[] = {};
     barrelAttachment_pool[] = {};
-    scope_pool[] = {};
+    scopes[] = {};
     optional[] = {};
     magazine = "";
     magazineTracer = "";
@@ -30,9 +30,11 @@ class WeaponClass {
 };
 
 class ItemsClass {
+    ace[] = {};
     grenades[] = {};
     medicMaterial[] = {};
     other[] = {};
+    onApplyLoadout = "";
 };
 
 class SoldierClass {
@@ -45,5 +47,4 @@ class SoldierClass {
     };
     class Items : ItemsClass {};
     onApplyLoadout = "";
-    faction = "";
 };

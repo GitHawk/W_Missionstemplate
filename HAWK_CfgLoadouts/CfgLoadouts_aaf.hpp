@@ -1,145 +1,159 @@
 class CO : SoldierClass {
     class Container : ContainerClass {
-        O_Uniform
-        O_Light_Vest
-        O_Small_Backpack
+        I_Uniform
+        I_Light_Vest
+        I_Small_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : KatibaC {};
-        class handGun : O_Officer_Pistol {};
+        class primaryWeapon : Mk20C {};
+        class handGun : I_Officer_Pistol {};
     };
-    class Gear : O_NormalSoldier {
-        O_Officer_Helmet
+    class Gear : I_NormalSoldier {
+        I_EasyTrackPDA
+        I_Officer_Helmet
         Rangefinder
-        O_EasyTrackPDA
+        Team_Medium_Large_Radio
     };
     class Items : SmallMedicMaterial {};
-    onApplyLoadout = "_obj addItem 'ACRE_PRC117F';";
 };
 
-class XO : CO {};
+class XO : CO {
+    class Gear : Gear {
+        I_EasyTrackLAPTOP
+    };
+};
 
 class COLO : XO {
     class Gear : Gear {
-        O_Cap_Helmet
+        I_Cap_Helmet
     };
 };
 
 class MIO : COLO {
     class Gear : Gear {
-        O_EasyTrackLAPTOP
+        I_EasyTrackLAPTOP
     };
     class Items : Items {
-        other[] = {"O_UavTerminal", "ACE_microDAGR"};
+        other[] = {"I_UavTerminal"};
     };
 };
 
 class JTAC : XO {
+    class Container : Container {
+        I_Medium_Backpack
+    };
     class Weapons : Weapons {
-        class primaryWeapon : KatibaGL {};
-        class handGun : O_Pistol {};
+        class primaryWeapon : Mk20GL {
+            optional[] = {
+                {"1Rnd_SmokeRed_Grenade_shell",8}
+            };
+        };
+        class handGun : I_Pistol {};
     };
     class Gear : Gear {
-        O_Soldier_Helmet
-        O_Laserdesignator
+        GPS
+        I_Soldier_Helmet
+        I_Laserdesignator
     };
-    onApplyLoadout = "_obj addMagazine 'Laserbatteries';";
 };
 
 class RIFLEMAN : SoldierClass {
     class Container : ContainerClass {
-        O_Uniform
-        O_Standard_Vest
-        O_Big_Backpack
+        I_Uniform
+        I_Standard_Vest
+        I_Big_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : Katiba {
+        class primaryWeapon : Mk20 {
             optional[] = {
-                {"150Rnd_762x54_Box_Tracer", 2},
+                {"200Rnd_65x39_cased_Box_Tracer", 2},
                 {"1Rnd_HE_Grenade_shell", 8}
             };
         };
-        class handGun : O_Pistol {};
+        class handGun : I_Pistol {};
     };
-    class Gear : O_NormalSoldier {
-        O_Soldier_Helmet
+    class Gear : I_NormalSoldier {
+        I_Soldier_Helmet
     };
     class Items : MoreMedicMaterial {};
 };
 
 class RIFLEMAN_AT : RIFLEMAN {
     class Container : Container {
-        O_Small_Backpack
+        I_Small_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : Katiba {};
-        class secondaryWeapon : RPG32 {};
+        class primaryWeapon : Mk20 {};
+        class secondaryWeapon : PCML {};
     };
     class Items : BasicMedicMaterial {};
 };
 
 class ASSISTANT_RIFLEMAN_AT : RIFLEMAN_AT {
-    class Container : Container {
-        O_Medium_Backpack
-    };
-    class Weapons : Weapons {
-        class primaryWeapon : Katiba {
-            optional[] = {{"RPG32_F", 2}};
-        };
-    };
+    // In ACE PCML is single use, so give assistant own launcher.
 };
 
 class AUTORIFLEMAN : RIFLEMAN {
     class Container : Container {
-        O_Small_Backpack
+        I_Small_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : Zafir {};
+        class primaryWeapon : Mk200 {};
     };
     class Items : SmallMedicMaterial {};
 };
 
 class EXPLOSIVE_SPECIALIST : RIFLEMAN {
     class Weapons : Weapons {
-        class primaryWeapon : Katiba {
+        class primaryWeapon : Mk20 {
             magazinesMax = 8;
         };
     };
     class Items : ExplosiveMaterial {};
 };
 
+class COMBAT_ENGINEER : RIFLEMAN {
+    class Weapons : Weapons {
+        class primaryWeapon : Mk20 {};
+    };
+    class Items : Items {
+        other[] = {
+            "ToolKit",
+            "ACE_DefusalKit"
+        };
+    };
+};
 class COMBAT_MEDIC : RIFLEMAN {
     class Container : Container {
-        O_Small_Backpack
+        I_Small_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : KatibaC {};
+        class primaryWeapon : Mk20C {};
     };
     class Items : CombatMedicMaterial {};
-    onApplyLoadout = "_obj setVariable ['ace_medical_medicClass',2,true];";
 };
 
 class MEDIC : COMBAT_MEDIC {
     class Container : Container {
-        O_Big_Backpack
+        I_Big_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : Sting {};
+        class primaryWeapon : PDW2000 {};
     }
     class Items : MedicMaterial {};
 };
 
 class MEDIC_TL : MEDIC {
-    class Gear : O_NormalSoldier {
-        O_EasyTrackPDA
+    class Gear : I_NormalSoldier {
+        I_EasyTrackPDA
+        Team_Medium_Radio
     };
-    onApplyLoadout = "_obj addItem 'ACRE_PRC152'; _obj setVariable ['ace_medical_medicClass',2,true];";
 };
 
 class DESIGNATED_MARKSMAN : AUTORIFLEMAN {
     class Weapons : Weapons {
         class primaryWeapon : Mk1 {};
-        class handGun : O_Pistol {};
+        class handGun : I_Pistol {};
     };
     class Gear : Gear {
         Binocular
@@ -148,22 +162,22 @@ class DESIGNATED_MARKSMAN : AUTORIFLEMAN {
 
 class AT_SPECIALIST : DESIGNATED_MARKSMAN {
     class Container : Container {
-        O_Medium_Backpack
+        I_Medium_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : Katiba {
+        class primaryWeapon : Mk20 {
             magazinesMax = 8;
         };
-        class secondaryWeapon : O_TitanAT {};
+        class secondaryWeapon : I_TitanAT {};
     };
 };
 
 class ASSISTANT_AT : DESIGNATED_MARKSMAN {
     class Container : Container {
-        O_Big_Backpack
+        I_Big_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : Katiba {
+        class primaryWeapon : Mk20 {
             magazinesMax = 9;
             optional[] = {{"Titan_AT",2},"Titan_AP"};
         };
@@ -172,10 +186,10 @@ class ASSISTANT_AT : DESIGNATED_MARKSMAN {
 
 class AA_SPECIALIST : AT_SPECIALIST {
     class Container : Container {
-        O_Medium_Backpack
+        I_Medium_Backpack
     };
     class Weapons : Weapons {
-        class secondaryWeapon : O_TitanAA {};
+        class secondaryWeapon : I_TitanAA {};
     };
 };
 
@@ -187,21 +201,21 @@ class ASSISTANT_AA : ASSISTANT_AT {
 
 class MMG : AUTORIFLEMAN {
     class Container : Container {
-        O_Small_Backpack
+        I_Small_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : Navid {};
+        class primaryWeapon : SPMG {};
     };
 };
 
 class ASSISTANT_MMG : AUTORIFLEMAN {
     class Container : Container {
-        O_Medium_Backpack
+        I_Medium_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : Katiba {
+        class primaryWeapon : Mk20 {
             magazinesMax = 8;
-            optional[] = {{"150Rnd_93x64_Mag",4}};
+            optional[] = {{"130Rnd_338_Mag",5}};
         };
     };
     class Gear : Gear {
@@ -211,30 +225,46 @@ class ASSISTANT_MMG : AUTORIFLEMAN {
 
 class HMG : AUTORIFLEMAN {
     class Container : Container {
-        O_HMG_Backpack
+        I_HMG_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : Katiba {};
+        class primaryWeapon : Mk20 {};
     };
     class Gear : Gear {
-        binocular_pool[] = {};
+        binocular[] = {};
     };
 };
 
 class ASSISTANT_HMG : HMG {
     class Container : Container {
-        O_Assistant_HMG_Backpack
+        I_Assistant_HMG_Backpack
     };
 };
 
 class GRENADIER : AUTORIFLEMAN {
     class Container : Container {
-        O_Grenade_Vest
+        I_Grenade_Vest
     };
     class Weapons : Weapons {
-        class primaryWeapon : KatibaGL {};
+        class primaryWeapon : Mk20GL {};
     };
     class Items : BasicMedicMaterial {};
+};
+
+class JTAC_RFL : GRENADIER {
+    class Container : Container {
+        I_Medium_Backpack
+    };
+    class primaryWeapon : Mk20GL {
+        optional[] = {
+            {"1Rnd_SmokeRed_Grenade_shell", 8}
+        };
+    };
+    class Gear : Gear {
+        GPS
+        I_Laserdesignator
+		Team_Large_Radio
+    };
 };
 
 class FIRETEAMLEADER : GRENADIER {
@@ -245,64 +275,84 @@ class FIRETEAMLEADER : GRENADIER {
 
 class SQUADLEADER : GRENADIER {
     class Container : Container {
-        O_Medium_Backpack
+        I_Medium_Backpack
     };
     class Weapons : Weapons {
-        class handGun : O_Officer_Pistol {};
+        class handGun : I_Officer_Pistol {};
     };
     class Gear : Gear {
         Rangefinder
-        O_EasyTrackPDA
+        I_EasyTrackPDA
+        Team_Medium_Radio
+	};
+};
+
+class PLATOONLEADER : SQUADLEADER {
+    class Gear : Gear {
+        Team_Large_Radio
     };
-    onApplyLoadout = "_obj addItem 'ACRE_PRC117F';";
+};
+
+class PLATOONSERGEANT : GRENADIER {
+    class Container : Container {
+        I_Medium_Backpack
+    };
+    class Gear : Gear {
+        Rangefinder
+		Team_Large_Radio
+    };
 };
 
 class RECON_SCOUT : SoldierClass {
     class Container : ContainerClass {
-        O_SpecOp_Uniform
+        I_SpecOp_Uniform
         Tac_Vest
-        O_Small_Backpack
+        I_Small_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : Katiba {
+        class primaryWeapon : Mk20 {
             barrelAttachment_pool[] = {"muzzle_snds_H"};
+            scopes[] += {"optic_Nightstalker"};
             magazinesMax = 6;
         };
-        class handGun : O_Pistol {
+        class handGun : I_Pistol {
             barrelAttachment_pool[] = {"muzzle_snds_L"};
         };
     };
-    class Gear : O_NormalSoldier {
-        O_Beanie_Helmet
+    class Gear : I_NormalSoldier {
+        I_Beanie_Helmet
         Rangefinder
     };
-    class Items : O_SOFMedicMaterial {};
-    onApplyLoadout = "_obj addItem 'optic_Nightstalker';";
+    class Items : I_SOFMedicMaterial {};
 };
 
 class RECON_TL : RECON_SCOUT {
     class Container : Container {
-        O_Small_Backpack
+        I_Small_Backpack
     };
     class Gear : Gear {
-        O_EasyTrackPDA
+        I_EasyTrackPDA
+        Team_Large_Radio
     };
-    onApplyLoadout = "_obj addItem 'ACRE_PRC117F';";
 };
 
 class RECON_ENGINEER : RECON_SCOUT {
     class Container : Container {
-        O_Big_Backpack
+        I_Big_Backpack
     };
-    onApplyLoadout = "_obj addItem 'ToolKit'; _obj addItem 'ACE_DefusalKit';";
+    class Items : Items {
+        other[] = {
+            "ToolKit",
+            "ACE_DefusalKit"
+        };
+    };
 };
 
 class RECON_MEDIC : RECON_SCOUT {
     class Container : Container {
-        O_Big_Backpack
+        I_Big_Backpack
     };
-    class Items : O_SOFBigMedicMaterial {};
-    onApplyLoadout = "_obj setVariable ['ace_medical_medicClass',2,true];";
+    class Items : I_SOFBigMedicMaterial {};
 };
 
 class RECON_DM : RECON_SCOUT {
@@ -313,54 +363,56 @@ class RECON_DM : RECON_SCOUT {
 
 class RECON_UAV_OPERATOR : RECON_SCOUT {
     class Container : Container {
-        O_UAV_Backpack
+        I_UAV_Backpack
     };
     class Gear : Gear {
-        O_UAV
+        I_UAV
     };
 };
 
 class UAVOPERATOR : RIFLEMAN {
     class Container : Container {
-        O_Standard_Vest
-        O_UAV_Backpack
+        I_Standard_Vest
+        I_UAV_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : KatibaC {
+        class primaryWeapon : Mk20C {
             magazinesMax = 6;
         };
-        class handGun : O_Pistol {};
+        class handGun : I_Pistol {};
     };
     class Gear : Gear {
-        O_UAV
+        I_UAV
     };
     class Items : SmallMedicMaterial {};
 };
 
 class SNIPER : SoldierClass {
     class Container : ContainerClass {
-        O_Sniper_Uniform
-        O_SOF_Vest
+        I_Sniper_Uniform
+        I_SOF_Vest
     };
     class Weapons : Weapons {
-        class primaryWeapon : GM6 {};
-        class handGun : O_Pistol {
+        class primaryWeapon : GM6 {
+            scopes[] += {"optic_Nightstalker"};
+        };
+        class handGun : I_Pistol {
             barrelAttachment_pool[] = {"muzzle_snds_L"};
         };
     };
-    class Gear : O_NormalSoldier {
-        O_Sniper_Helmet
+    class Gear : I_NormalSoldier {
+        I_Sniper_Helmet
     };
-    class Items : O_SOFMedicMaterial {};
-    onApplyLoadout = "_obj addItem 'optic_Nightstalker';";
+    class Items : I_SOFMedicMaterial {};
 };
 
 class SPOTTER : SNIPER {
     class Container : Container {
-        O_Medium_Backpack
+        I_Medium_Backpack
     };
     class Weapons : Weapons {
         class primaryWeapon : Mk1 {
+            scopes[] += {"optic_Nightstalker"};
             magazinesMax = 8;
             optional[] = {
                 {"5Rnd_127x108_Mag", 5},
@@ -369,116 +421,124 @@ class SPOTTER : SNIPER {
         };
     };
     class Gear : Gear {
-        O_EasyTrackPDA
+        I_EasyTrackPDA
+		I_Laserdesignator
+        Team_Large_Radio
+        other[] = {
+            "ACE_ATragMX",
+            "ACE_Kestrel4500"
+        };
     };
-    onApplyLoadout = "_obj addItem 'optic_Nightstalker'; _obj addItem 'ACE_ATragMX'; _obj addItem 'ACE_Kestrel4500'; _obj addItem 'ACRE_PRC117F';";
 };
 
 class CREW : SoldierClass {
     class Container : ContainerClass {
-        O_Uniform
+        I_Uniform
         Tac_Vest
     };
-    class Gear : O_NormalSoldier {
-        O_Crew_Helmet
+    class Gear : I_NormalSoldier {
+        I_Crew_Helmet
     };
     class Weapons : Weapons {
-        class primaryWeapon : Sting {};
-        class handGun : O_Pistol {};
+        class primaryWeapon : PDW2000 {};
+        class handGun : I_Pistol {};
     };
-    class Items : O_SOFMedicMaterial {};
+    class Items : I_SOFMedicMaterial {};
 };
 
 class COMMANDER : CREW {
     class Container : Container {
-        O_Small_Backpack
+        I_Small_Backpack
     };
     class Weapons : Weapons {
-        class handGun : O_Officer_Pistol {};
+        class handGun : I_Officer_Pistol {};
     };
     class Gear : Gear {
-        O_EasyTrackPDA
+        I_EasyTrackPDA
+        Team_Large_Radio
     };
-    onApplyLoadout = "_obj addItem 'ACRE_PRC117F';";
 };
 
 class HELICREW : CREW {
     class Container : Container {
-        O_Heli_Uniform
-        O_Small_Backpack
+        I_Heli_Uniform
+        I_Small_Backpack
     };
     class Gear : Gear {
-        O_Heli_Helmet
+        I_Heli_Helmet
+        Team_Large_Radio
     };
-    onApplyLoadout = "_obj addItem 'ACRE_PRC117F';";
 };
 
 class HELIPILOT : COMMANDER {
     class Container : Container {
-        O_Heli_Uniform
+        I_Heli_Uniform
     };
     class Gear : Gear {
-        O_Heli_Helmet
+        I_Heli_Helmet
     };
 };
 
 class JETPILOT : HELIPILOT {
     class Container : ContainerClass {
-        O_Jet_Uniform
-        O_Bandolier_Vest
+        I_Jet_Uniform
+        I_Bandolier_Vest
         Parachute_Backpack
     };
     class Gear : Gear {
-        O_Jet_Helmet
+        I_Jet_Helmet
     };
 };
 
 class LOGISTICS : SoldierClass {
     class Container : ContainerClass {
-        O_Logistics_Uniform
+        I_Logistics_Uniform
         Belt_Vest
-        O_Small_Backpack
-    };
-    class Gear : O_NormalSoldier {
-        O_Logistic_Helmet
-        O_EasyTrackPDA
+        I_Small_Backpack
     };
     class Weapons : Weapons {
-        class primaryWeapon : Sting {};
-        class handGun : O_Pistol {};
+        class primaryWeapon : PDW2000 {};
+        class handGun : I_Pistol {};
+    };
+    class Gear : I_NormalSoldier {
+        I_Logistic_Helmet
+        I_EasyTrackPDA
+        Team_Large_Radio
     };
     class Items : SmallMedicMaterial {
-        other[] = {"O_UavTerminal", "ACE_microDAGR"};
+         other[] = {
+             "I_UavTerminal",
+             "ToolKit"
+         };
     };
-    onApplyLoadout = "_obj addItem 'ToolKit'; _obj setVariable ['ACE_IsEngineer', 1, true]; _obj addItem 'ACRE_PRC117F';";
+    onApplyLoadout = "_obj setVariable ['ace_IsEngineer', 1, true];";
 };
 
 class LOGISTICS_TL : LOGISTICS {
     class Weapons : Weapons {
-        class handGun : O_Officer_Pistol {};
+        class handGun : I_Officer_Pistol {};
     };
     class Gear : Gear {
-        O_Cap_Helmet
+        I_Cap_Helmet
     };
 };
 
 class DIVER : SoldierClass {
     class Container : ContainerClass {
-        O_Diver_Uniform
-        O_Diver_Vest
+        I_Diver_Uniform
+        I_Diver_Vest
         Small_Backpack
     };
-    class Gear : O_NormalSoldier {
-        helmet_pool[] = {};
-        O_Diver_Goggle
-        O_Laserdesignator
-    };
     class Weapons : Weapons {
-        class primaryWeapon : O_SDAR {};
-        class handGun : O_Pistol {
+        class primaryWeapon : I_SDAR {};
+        class handGun : I_Pistol {
             barrelAttachment_pool[] = {"muzzle_snds_L"};
         };
     };
-    class Items : O_SOFMedicMaterial {};
-    onApplyLoadout = "_obj addMagazine 'Laserbatteries';";
+    class Gear : I_NormalSoldier {
+        helmet_pool[] = {};
+        I_Diver_Goggle
+        I_Laserdesignator
+    };
+    class Items : I_SOFMedicMaterial {};
 };

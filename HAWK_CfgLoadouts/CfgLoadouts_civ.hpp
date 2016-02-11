@@ -10,7 +10,7 @@ class VIP : SoldierClass {
             barrelAttachment_pool[] = {};
             magazine = "30Rnd_65x39_caseless_mag_Tracer";
             magazinesMax = 0;
-            scope_pool[] = {};
+            scopes[] = {};
         };
         class handGun : B_Officer_Pistol {};
     };

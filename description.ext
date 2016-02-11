@@ -86,9 +86,9 @@ class CfgFrameworkSettings {
 class CfgFunctions {
     #include "W_FRAMEWORK\CfgFunctions.hpp"         // W_FRAMEWORK
     #include "FUPS\CfgFunctions.hpp"                // FUPS
-    #include "FETT_CfgLoadouts\CfgFunctions.hpp" // Loadouts
+    #include "HAWK_CfgLoadouts\CfgFunctions.hpp" // Loadouts
 };
-#include "FETT_CfgLoadouts\CfgLoadouts.hpp"      // Loadouts
+#include "HAWK_CfgLoadouts\CfgLoadouts.hpp"      // Loadouts
 
 class Params {
 	#include "W_FRAMEWORK\paramHC.hpp"			//	W_FRAMEWORK
