@@ -29,6 +29,7 @@ removeHeadgear _obj;
 removeGoggles _obj;
 
 private _file = "";
+_side = toLower _side;
 switch (_side) do {
     case ("civilian"): { _file = "loadouts\civilian_loadout.sqf"; };
     case ("east"): { _file = "loadouts\east_loadout.sqf"; };
