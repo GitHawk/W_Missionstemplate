@@ -54,7 +54,7 @@ class CfgFrameworkSettings {
 	// 1, wenn Spieler bei fehlenden DLCs gekickt werden sollen, 0 sonst
 	allowkick = 1;
 	// Hier können Funkgeräte angegeben werden, die allein bei dem Tech Support Objekt geholt werden können, wenn auskommentiert, können alle Funkgeräte geholt werden
-	// radios_whitelist[] = {"ACRE_PRC343","ACRE_PRC148","ACRE_PRC152","ACRE_PRC117F","ACRE_PRC77"};
+	// radiowhitelist[] = {"ACRE_PRC343","ACRE_PRC148","ACRE_PRC152","ACRE_PRC117F","ACRE_PRC77"};
 };
 
 // Hier können die Channels angeschaltet werden.
