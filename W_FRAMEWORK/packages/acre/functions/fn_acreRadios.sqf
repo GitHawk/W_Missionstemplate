@@ -1,7 +1,7 @@
 params [["_obj",objNull,[objNull]]];
 
 private _radios = ["ACRE_PRC343","ACRE_PRC148","ACRE_PRC152","ACRE_PRC117F","ACRE_PRC77"];
-private _whitelist = ["radio_whitelist",_radios,"ARRAY"] call FETT_framework_fnc_getSetting;
+private _whitelist = ["radios_whitelist",_radios,"ARRAY"] call FETT_framework_fnc_getSetting;
 _radios = _radios arrayIntersect _whitelist;
 
 {
