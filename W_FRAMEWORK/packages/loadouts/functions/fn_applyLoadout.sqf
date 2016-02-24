@@ -43,7 +43,7 @@ _side = toLower _side;
 switch (_side) do {
     case ("civilian"): { _file = "loadouts\civilian_loadout.sqf"; };
     case ("east"): { _file = "loadouts\east_loadout.sqf"; };
-    case ("independent"): { _file = "loadouts\independent_loadout.sqf"; };
+    case ("guer"): { _file = "loadouts\independent_loadout.sqf"; };
     case ("west"): { _file = "loadouts\west_loadout.sqf"; };
 };
 
