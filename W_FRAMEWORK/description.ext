@@ -1,4 +1,4 @@
-w_framework_version = "v4.1.2";
+w_framework_version = "v4.1.3";
 
 enableDebugConsole = 1;
 respawn = 3;
@@ -22,11 +22,3 @@ respawn = 3;
 #ifdef MILSIM
 	medicSystem = "MILSIM";
 #endif
-
-class ACE_Settings {
-	#include "ACE_Settings.hpp"			// W_FRAMEWORK
-};
-
-class CfgFramework {
-	#include "CfgFramework.hpp"		// W_FRAMEWORK
-};
