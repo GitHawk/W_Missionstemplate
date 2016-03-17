@@ -18,16 +18,7 @@ if (isNull _obj) then {
 };
 params ["", ["_loadout", _obj getVariable ["loadout", ""], [""]], ["_side", _obj getVariable ["side", str (side _obj)], [""]]];
 
-if (isPlayer _obj && didJIP && {[W_frameworkLoadoutHash,name player] call CBA_fnc_hashHasKey}) then {
-    _loadout = [W_frameworkLoadoutHash,name player] call CBA_fnc_hashGet;
-};
-
 if (_loadout == "") exitWith {};
-
-if (isPlayer _obj && {!([W_frameworkLoadoutHash,name player] call CBA_fnc_hashHasKey)}) then {
-    W_frameworkLoadoutSync = [name player,_loadout];
-    publicVariableServer "W_frameworkLoadoutSync";
-};
 
 removeAllWeapons _obj;
 removeAllItems _obj;

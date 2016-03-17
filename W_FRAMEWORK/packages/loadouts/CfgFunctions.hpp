@@ -3,7 +3,6 @@ class framework_loadouts {
     class main {
         file = "W_FRAMEWORK\packages\loadouts\functions";
         class applyLoadout {};
-        class serverCreateHash {};
     };
 };
 class framework_loadouts_api {
