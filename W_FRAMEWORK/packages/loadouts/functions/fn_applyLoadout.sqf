@@ -17,6 +17,7 @@ if (isNull _obj) then {
     _obj = player;
 };
 params ["", ["_loadout", _obj getVariable ["loadout", ""], [""]], ["_side", _obj getVariable ["side", str (side _obj)], [""]]];
+
 if (_loadout == "") exitWith {};
 private _faction = _obj getVariable ["faction", faction _obj];
 
